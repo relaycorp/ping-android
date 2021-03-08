@@ -73,13 +73,13 @@ class MainActivity : AppCompatActivity() {
                     recipient.certificate.subjectPublicKey,
                     ZonedDateTime.now().plusDays(3)
                 )
-                val pingSerialized = serializePing(
+                val pingServiceMessage = makePingServiceMessage(
                     id.value,
                     authorization.pdaSerialized,
                     authorization.pdaChainSerialized
                 )
                 val outgoingMessage = OutgoingMessage.build(
-                    payload = pingSerialized,
+                    payload = pingServiceMessage.encrypt(recipient.certificate),
                     senderEndpoint = sender,
                     recipientEndpoint = recipient,
                     id = id

@@ -36,6 +36,8 @@ class App : Application() {
                 val pingId = extractPingIdFromPongMessage(it.payload)
                 val pingMessage = repository.get(pingId) ?: PingMessage(pingId)
                 repository.set(pingMessage.copy(received = System.currentTimeMillis()))
+
+                it.ack()
             }
         }
     }
