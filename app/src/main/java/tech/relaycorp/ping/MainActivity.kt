@@ -16,6 +16,7 @@ import tech.relaycorp.relaydroid.endpoint.PublicThirdPartyEndpoint
 import tech.relaycorp.relaydroid.messaging.MessageId
 import tech.relaycorp.relaydroid.messaging.OutgoingMessage
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
+import java.time.ZonedDateTime
 import java.util.*
 import javax.inject.Inject
 
@@ -67,11 +68,21 @@ class MainActivity : AppCompatActivity() {
 
         send.setOnClickListener {
             backgroundScope.launch {
+                val id = MessageId.generate()
+                val authorization = sender.issueAuthorization(
+                    recipient.certificate.subjectPublicKey,
+                    ZonedDateTime.now().plusDays(3)
+                )
+                val pingSerialized = serializePing(
+                    id.value,
+                    authorization.pdaSerialized,
+                    authorization.pdaChainSerialized
+                )
                 val outgoingMessage = OutgoingMessage.build(
-                    payload = ByteArray(0),
+                    payload = pingSerialized,
                     senderEndpoint = sender,
                     recipientEndpoint = recipient,
-                    id = MessageId.generate()
+                    id = id
                 )
                 RelaynetTemp.GatewayClient.sendMessage(outgoingMessage)
                 val pingMessage = PingMessage(outgoingMessage.id.value)
