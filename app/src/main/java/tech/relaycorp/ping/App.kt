@@ -10,7 +10,7 @@ import tech.relaycorp.ping.di.AppComponent
 import tech.relaycorp.ping.di.AppModule
 import tech.relaycorp.ping.di.DaggerAppComponent
 import tech.relaycorp.relaydroid.Relaynet
-import tech.relaycorp.relaydroid.RelaynetTemp
+import tech.relaycorp.relaydroid.RelaynetTemp.GatewayClient
 import javax.inject.Inject
 
 class App : Application() {
@@ -32,7 +32,7 @@ class App : Application() {
         CoroutineScope(coroutineContext).launch {
             Relaynet.setup(this@App)
 
-            RelaynetTemp.GatewayClient.receiveMessages().collect {
+            GatewayClient.receiveMessages().collect {
                 val pingMessage = repository.get(it.id.value) ?: PingMessage(it.id.value)
                 repository.set(pingMessage.copy(received = System.currentTimeMillis()))
             }

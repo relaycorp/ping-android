@@ -1,7 +1,6 @@
 package tech.relaycorp.ping
 
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_main.*
@@ -43,7 +42,6 @@ class MainActivity : AppCompatActivity() {
                 RelaynetTemp.GatewayClient.bind()
                 sender = FirstPartyEndpoint.register()
                 recipient = PublicThirdPartyEndpoint.import(
-                    "ping.awala.services",
                     Certificate.deserialize(
                         resources.openRawResource(R.raw.identity).use { it.readBytes() }
                     )
@@ -78,6 +76,12 @@ class MainActivity : AppCompatActivity() {
                 RelaynetTemp.GatewayClient.sendMessage(outgoingMessage)
                 val pingMessage = PingMessage(outgoingMessage.id.value)
                 repository.set(pingMessage)
+            }
+        }
+
+        clear.setOnClickListener {
+            backgroundScope.launch {
+                repository.clear()
             }
         }
     }
