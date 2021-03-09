@@ -43,6 +43,7 @@ class MainActivity : AppCompatActivity() {
                 RelaynetTemp.GatewayClient.bind()
                 sender = FirstPartyEndpoint.register()
                 recipient = PublicThirdPartyEndpoint.import(
+                    "ping.awala.services",
                     Certificate.deserialize(
                         resources.openRawResource(R.raw.identity).use { it.readBytes() }
                     )
