@@ -70,16 +70,17 @@ class MainActivity : AppCompatActivity() {
             backgroundScope.launch {
                 val id = MessageId.generate()
                 val authorization = sender.issueAuthorization(
-                    recipient.certificate.subjectPublicKey,
+                    recipient.identityCertificate.subjectPublicKey,
                     ZonedDateTime.now().plusDays(3)
                 )
-                val pingServiceMessage = makePingServiceMessage(
+                val pingMessageSerialized = serializePingMessage(
                     id.value,
                     authorization.pdaSerialized,
                     authorization.pdaChainSerialized
                 )
                 val outgoingMessage = OutgoingMessage.build(
-                    payload = pingServiceMessage.encrypt(recipient.certificate),
+                    "application/vnd.relaynet.ping-v1.ping",
+                    pingMessageSerialized,
                     senderEndpoint = sender,
                     recipientEndpoint = recipient,
                     id = id

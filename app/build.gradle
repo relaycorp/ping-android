@@ -5,6 +5,7 @@ apply plugin: 'kotlin-kapt'
 
 repositories {
     maven { url "https://jitpack.io" }
+    maven { url "https://dl.bintray.com/relaycorp/maven" }
 }
 
 android {
@@ -58,7 +59,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.33'
 
     // Relaynet
-    implementation 'com.github.relaycorp:relaynet-endpoint-android:main-SNAPSHOT'
+    implementation 'tech.relaycorp:relaydroid:1.2.0'
 
     // Preferences
     implementation 'androidx.preference:preference-ktx:1.1.1'
