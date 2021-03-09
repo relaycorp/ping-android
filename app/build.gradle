@@ -59,7 +59,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.33'
 
     // Relaynet
-    implementation 'tech.relaycorp:relaydroid:1.2.1'
+    implementation 'tech.relaycorp:relaydroid:1.2.2'
 
     // Preferences
     implementation 'androidx.preference:preference-ktx:1.1.1'
