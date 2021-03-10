@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
             backgroundScope.launch {
                 val id = MessageId.generate()
                 val authorization = sender.issueAuthorization(
-                    recipient.identityCertificate.subjectPublicKey,
+                    recipient,
                     ZonedDateTime.now().plusDays(3)
                 )
                 val pingMessageSerialized = serializePingMessage(
