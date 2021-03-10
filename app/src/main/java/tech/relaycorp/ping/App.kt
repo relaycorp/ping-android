@@ -33,8 +33,11 @@ class App : Application() {
             Relaynet.setup(this@App)
 
             GatewayClient.receiveMessages().collect {
-                val pingMessage = repository.get(it.id.value) ?: PingMessage(it.id.value)
+                val pingId = extractPingIdFromPongMessage(it.content)
+                val pingMessage = repository.get(pingId) ?: PingMessage(pingId)
                 repository.set(pingMessage.copy(received = System.currentTimeMillis()))
+
+                it.ack()
             }
         }
     }
