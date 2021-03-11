@@ -13,7 +13,7 @@ import kotlinx.coroutines.withContext
 import tech.relaycorp.relaydroid.RelaynetTemp
 import tech.relaycorp.relaydroid.endpoint.FirstPartyEndpoint
 import tech.relaycorp.relaydroid.endpoint.PublicThirdPartyEndpoint
-import tech.relaycorp.relaydroid.messaging.MessageId
+import tech.relaycorp.relaydroid.messaging.ParcelId
 import tech.relaycorp.relaydroid.messaging.OutgoingMessage
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
 import java.time.ZonedDateTime
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
 
         send.setOnClickListener {
             backgroundScope.launch {
-                val id = MessageId.generate()
+                val id = ParcelId.generate()
                 val authorization = sender.issueAuthorization(
                     recipient,
                     ZonedDateTime.now().plusDays(3)
@@ -84,10 +84,10 @@ class MainActivity : AppCompatActivity() {
                     pingMessageSerialized,
                     senderEndpoint = sender,
                     recipientEndpoint = recipient,
-                    id = id
+                    parcelId = id
                 )
                 RelaynetTemp.GatewayClient.sendMessage(outgoingMessage)
-                val pingMessage = PingMessage(outgoingMessage.id.value)
+                val pingMessage = PingMessage(outgoingMessage.parcelId.value)
                 repository.set(pingMessage)
             }
         }
