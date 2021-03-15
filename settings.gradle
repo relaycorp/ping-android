@@ -1,2 +1,2 @@
 include ':app'
-rootProject.name = "Relaynet Ping"
+rootProject.name = "Awala Ping"
