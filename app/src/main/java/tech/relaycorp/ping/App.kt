@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 import tech.relaycorp.ping.di.AppComponent
 import tech.relaycorp.ping.di.AppModule
 import tech.relaycorp.ping.di.DaggerAppComponent
+import tech.relaycorp.relaydroid.GatewayClient
 import tech.relaycorp.relaydroid.Relaynet
-import tech.relaycorp.relaydroid.RelaynetTemp.GatewayClient
 import javax.inject.Inject
 
 class App : Application() {

@@ -10,7 +10,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import tech.relaycorp.relaydroid.RelaynetTemp
+import tech.relaycorp.relaydroid.GatewayClient
 import tech.relaycorp.relaydroid.endpoint.FirstPartyEndpoint
 import tech.relaycorp.relaydroid.endpoint.PublicThirdPartyEndpoint
 import tech.relaycorp.relaydroid.messaging.ParcelId
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         lifecycleScope.launch {
             send.isEnabled = false
             withContext(backgroundContext) {
-                RelaynetTemp.GatewayClient.bind()
+                GatewayClient.bind()
                 sender = FirstPartyEndpoint.register()
                 recipient = PublicThirdPartyEndpoint.import(
                     "ping.awala.services",
@@ -86,7 +86,7 @@ class MainActivity : AppCompatActivity() {
                     recipientEndpoint = recipient,
                     parcelId = id
                 )
-                RelaynetTemp.GatewayClient.sendMessage(outgoingMessage)
+                GatewayClient.sendMessage(outgoingMessage)
                 val pingMessage = PingMessage(outgoingMessage.parcelId.value)
                 repository.set(pingMessage)
             }
@@ -101,6 +101,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        RelaynetTemp.GatewayClient.unbind()
+        GatewayClient.unbind()
     }
 }
