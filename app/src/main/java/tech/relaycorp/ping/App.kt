@@ -9,8 +9,8 @@ import kotlinx.coroutines.launch
 import tech.relaycorp.ping.di.AppComponent
 import tech.relaycorp.ping.di.AppModule
 import tech.relaycorp.ping.di.DaggerAppComponent
-import tech.relaycorp.relaydroid.GatewayClient
-import tech.relaycorp.relaydroid.Relaynet
+import tech.relaycorp.awaladroid.GatewayClient
+import tech.relaycorp.awaladroid.Awala
 import javax.inject.Inject
 
 class App : Application() {
@@ -30,7 +30,7 @@ class App : Application() {
         component.inject(this)
 
         CoroutineScope(coroutineContext).launch {
-            Relaynet.setup(this@App)
+            Awala.setup(this@App)
 
             GatewayClient.receiveMessages().collect {
                 val pingId = extractPingIdFromPongMessage(it.content)

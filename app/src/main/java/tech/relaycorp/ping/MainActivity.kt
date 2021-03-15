@@ -10,11 +10,11 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import tech.relaycorp.relaydroid.GatewayClient
-import tech.relaycorp.relaydroid.endpoint.FirstPartyEndpoint
-import tech.relaycorp.relaydroid.endpoint.PublicThirdPartyEndpoint
-import tech.relaycorp.relaydroid.messaging.ParcelId
-import tech.relaycorp.relaydroid.messaging.OutgoingMessage
+import tech.relaycorp.awaladroid.GatewayClient
+import tech.relaycorp.awaladroid.endpoint.FirstPartyEndpoint
+import tech.relaycorp.awaladroid.endpoint.PublicThirdPartyEndpoint
+import tech.relaycorp.awaladroid.messaging.ParcelId
+import tech.relaycorp.awaladroid.messaging.OutgoingMessage
 import tech.relaycorp.relaynet.wrappers.x509.Certificate
 import java.time.ZonedDateTime
 import java.util.*

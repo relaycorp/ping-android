@@ -58,8 +58,8 @@ dependencies {
     api 'com.google.dagger:dagger:2.33'
     kapt 'com.google.dagger:dagger-compiler:2.33'
 
-    // Relaynet
-    implementation 'tech.relaycorp:relaydroid:1.4.0'
+    // Awala
+    implementation 'tech.relaycorp:awaladroid:1.5.1'
 
     // Preferences
     implementation 'androidx.preference:preference-ktx:1.1.1'
