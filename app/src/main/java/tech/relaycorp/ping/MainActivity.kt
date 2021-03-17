@@ -15,7 +15,6 @@ import tech.relaycorp.awaladroid.endpoint.FirstPartyEndpoint
 import tech.relaycorp.awaladroid.endpoint.PublicThirdPartyEndpoint
 import tech.relaycorp.awaladroid.messaging.ParcelId
 import tech.relaycorp.awaladroid.messaging.OutgoingMessage
-import tech.relaycorp.relaynet.wrappers.x509.Certificate
 import java.time.ZonedDateTime
 import java.util.*
 import javax.inject.Inject
@@ -44,9 +43,7 @@ class MainActivity : AppCompatActivity() {
                 sender = FirstPartyEndpoint.register()
                 recipient = PublicThirdPartyEndpoint.import(
                     "ping.awala.services",
-                    Certificate.deserialize(
-                        resources.openRawResource(R.raw.identity).use { it.readBytes() }
-                    )
+                    resources.openRawResource(R.raw.identity).use { it.readBytes() }
                 )
             }
             send.isEnabled = true

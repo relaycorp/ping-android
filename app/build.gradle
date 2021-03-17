@@ -59,7 +59,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.33'
 
     // Awala
-    implementation 'tech.relaycorp:awaladroid:1.5.1'
+    implementation 'tech.relaycorp:awaladroid:1.5.4'
 
     // Preferences
     implementation 'androidx.preference:preference-ktx:1.1.1'
