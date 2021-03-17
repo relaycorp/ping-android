@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
                     authorization.pdaChainSerialized
                 )
                 val outgoingMessage = OutgoingMessage.build(
-                    "application/vnd.relaynet.ping-v1.ping",
+                    "application/vnd.awala.ping-v1.ping",
                     pingMessageSerialized,
                     senderEndpoint = sender,
                     recipientEndpoint = recipient,
