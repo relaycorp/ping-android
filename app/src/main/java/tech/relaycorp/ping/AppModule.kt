@@ -1,14 +1,11 @@
-package tech.relaycorp.ping.di
+package tech.relaycorp.ping
 
 import android.content.Context
 import android.content.SharedPreferences
 import android.content.res.Resources
-import com.squareup.moshi.Moshi
-import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.tfcporciuncula.flow.FlowSharedPreferences
 import dagger.Module
 import dagger.Provides
-import tech.relaycorp.ping.App
 import javax.inject.Singleton
 
 @Module
@@ -34,8 +31,4 @@ class AppModule(
     @Singleton
     fun flowSharedPreferences(sharedPreferences: SharedPreferences) =
         FlowSharedPreferences(sharedPreferences)
-
-    @Provides
-    @Singleton
-    fun moshi() = Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
 }

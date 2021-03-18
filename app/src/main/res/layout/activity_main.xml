@@ -1,45 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    android:orientation="vertical"
-    android:padding="16dp"
-    tools:context=".MainActivity">
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <TextView
-            android:id="@+id/pings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </androidx.core.widget.NestedScrollView>
+    <include layout="@layout/common_app_bar" />
 
     <LinearLayout
+        android:id="@+id/innerContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="end"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/clear"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+        <Button
+            style="@style/Widget.Ping.Button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|end"
-            android:layout_marginHorizontal="8dp"
-            android:text="Clear" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/send"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="8dp"
-            android:text="Send Ping" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </LinearLayout>

@@ -1,4 +1,4 @@
-package tech.relaycorp.ping
+package tech.relaycorp.ping.data
 
 import android.util.Base64
 import org.json.JSONArray

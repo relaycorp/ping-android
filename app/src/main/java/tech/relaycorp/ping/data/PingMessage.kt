@@ -1,4 +1,4 @@
-package tech.relaycorp.ping
+package tech.relaycorp.ping.data
 
 import java.util.*
 
