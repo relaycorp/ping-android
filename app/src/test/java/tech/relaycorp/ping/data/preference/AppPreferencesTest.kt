@@ -19,7 +19,7 @@ internal class AppPreferencesTest {
 
     private val sharedPreferences =
         ApplicationProvider.getApplicationContext<App>()
-            .getSharedPreferences("tech/relaycorp/ping/test", Context.MODE_PRIVATE)
+            .getSharedPreferences("test", Context.MODE_PRIVATE)
     private val coroutineContext = TestCoroutineScope().coroutineContext
     private val flowSharedPreferences = FlowSharedPreferences(sharedPreferences, coroutineContext)
     private val appPreferences = AppPreferences { flowSharedPreferences }

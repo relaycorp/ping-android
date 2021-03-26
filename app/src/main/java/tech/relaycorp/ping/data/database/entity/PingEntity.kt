@@ -9,7 +9,7 @@ import java.time.ZonedDateTime
 
 @Entity(tableName = "ping")
 data class PingEntity(
-    @PrimaryKey val messageId: String,
+    @PrimaryKey val pingId: String,
     val peerPrivateAddress: String,
     val peerType: PeerType,
     val sentAt: ZonedDateTime,

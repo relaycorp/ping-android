@@ -2,15 +2,15 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "78b9016303348ee3d59d12e04305662e",
+    "identityHash": "4fb1ae78917d63566b6a8b3ddda85a4f",
     "entities": [
       {
         "tableName": "ping",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`messageId` TEXT NOT NULL, `peerPrivateAddress` TEXT NOT NULL, `peerType` TEXT NOT NULL, `sentAt` INTEGER NOT NULL, `pongReceivedAt` INTEGER, PRIMARY KEY(`messageId`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pingId` TEXT NOT NULL, `peerPrivateAddress` TEXT NOT NULL, `peerType` TEXT NOT NULL, `sentAt` INTEGER NOT NULL, `pongReceivedAt` INTEGER, PRIMARY KEY(`pingId`))",
         "fields": [
           {
-            "fieldPath": "messageId",
-            "columnName": "messageId",
+            "fieldPath": "pingId",
+            "columnName": "pingId",
             "affinity": "TEXT",
             "notNull": true
           },
@@ -41,7 +41,7 @@
         ],
         "primaryKey": {
           "columnNames": [
-            "messageId"
+            "pingId"
           ],
           "autoGenerate": false
         },
@@ -84,7 +84,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '78b9016303348ee3d59d12e04305662e')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4fb1ae78917d63566b6a8b3ddda85a4f')"
     ]
   }
 }

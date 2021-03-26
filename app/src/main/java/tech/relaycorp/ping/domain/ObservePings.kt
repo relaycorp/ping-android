@@ -15,7 +15,7 @@ class ObservePings
     fun observe() = pingDao.listPublic().map { list ->
         list.map {
             Ping(
-                messageId = it.ping.messageId,
+                pingId = it.ping.pingId,
                 peer = Peer(
                     privateAddress = it.publicPeer.privateAddress,
                     alias = it.publicPeer.publicAddress,

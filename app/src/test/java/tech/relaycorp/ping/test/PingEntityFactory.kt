@@ -9,7 +9,7 @@ import java.util.*
 object PingEntityFactory {
     fun build(peer: PublicPeerEntity): PingEntity {
         return PingEntity(
-            messageId = UUID.randomUUID().toString(),
+            pingId = UUID.randomUUID().toString(),
             peerPrivateAddress = peer.privateAddress,
             peerType = PeerType.Public,
             sentAt = ZonedDateTime.now()
