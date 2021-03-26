@@ -1,0 +1,41 @@
+spec:
+  type: instrumentation
+  app: app/build/outputs/apk/debug/app-debug.apk
+  test: app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk
+  timeout: 30m
+  device:
+    # Asus Nexus 7 (physical). The oldest device we're testing.
+    - model: flo
+      version: 21   # Android 5.0
+      locale: en
+      orientation: portrait
+
+    # Nexus 5X (virtual)
+    - model: Nexus5X
+      version: 24   # Android 7.0
+      locale: en
+      orientation: portrait
+
+    # Nexus 5X (virtual)
+    - model: Nexus5X
+      version: 26   # Android 8.0
+      locale: en
+      orientation: portrait
+
+    # Pixel 2 (physical)
+    - model: walleye
+      version: 28   # Android 9.0
+      locale: en
+      orientation: portrait
+
+    # Pixel 2 (virtual)
+    - model: Pixel2
+      version: 29   # Android 10.0
+      locale: en
+      orientation: portrait
+
+    # Pixel 2 (virtual)
+    - model: Pixel2
+      version: 30   # Android 11.0
+      locale: en
+      orientation: portrait
