@@ -1,5 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="blue">#1976D2</color>
-  <color name="ic_launcher_background">#1976D2</color>
+  <color name="relaynet_primary">#F2C94C</color>
+  <color name="relaynet_secondary">#F2994A</color>
+
+  <color name="white">#FFFFFF</color>
+  <color name="gray_light">#EDF0F2</color>
+  <color name="gray_dark">#666666</color>
+  <color name="black">#27302B</color>
+  <color name="red">#F44336</color>
+
+  <color name="ic_launcher_background">@color/white</color>
 </resources>

@@ -1,0 +1,90 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "4fb1ae78917d63566b6a8b3ddda85a4f",
+    "entities": [
+      {
+        "tableName": "ping",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`pingId` TEXT NOT NULL, `peerPrivateAddress` TEXT NOT NULL, `peerType` TEXT NOT NULL, `sentAt` INTEGER NOT NULL, `pongReceivedAt` INTEGER, PRIMARY KEY(`pingId`))",
+        "fields": [
+          {
+            "fieldPath": "pingId",
+            "columnName": "pingId",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peerPrivateAddress",
+            "columnName": "peerPrivateAddress",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "peerType",
+            "columnName": "peerType",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "sentAt",
+            "columnName": "sentAt",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "pongReceivedAt",
+            "columnName": "pongReceivedAt",
+            "affinity": "INTEGER",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "pingId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "public_peer",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`privateAddress` TEXT NOT NULL, `publicAddress` TEXT NOT NULL, `deleted` INTEGER NOT NULL, PRIMARY KEY(`privateAddress`))",
+        "fields": [
+          {
+            "fieldPath": "privateAddress",
+            "columnName": "privateAddress",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "publicAddress",
+            "columnName": "publicAddress",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "deleted",
+            "columnName": "deleted",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "privateAddress"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4fb1ae78917d63566b6a8b3ddda85a4f')"
+    ]
+  }
+}

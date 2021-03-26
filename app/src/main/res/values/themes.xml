@@ -1,0 +1,60 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Base.Theme.Ping" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+        <item name="android:statusBarColor">@color/white</item>
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="Theme.Ping" parent="Base.Theme.Ping">
+        <item name="colorPrimary">@color/relaynet_primary</item>
+        <item name="colorSecondary">@color/relaynet_secondary</item>
+
+        <item name="android:colorBackground">@color/white</item>
+        <item name="colorSurface">@color/white</item>
+        <item name="colorError">@color/red</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="colorOnBackground">@color/black</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="colorOnError">@color/white</item>
+
+        <item name="android:textColor">?colorOnBackground</item>
+        <item name="android:textColorPrimary">?colorOnBackground</item>
+        <item name="android:textColorSecondary">@color/gray_dark</item>
+        <item name="android:fontFamily">@font/inria_sans</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ping.Body</item>
+
+        <item name="iconTint">@color/gray_dark</item>
+        <item name="android:colorControlHighlight">@color/gray_light</item>
+        <item name="android:listDivider">@color/gray_dark</item>
+
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:enforceStatusBarContrast" tools:targetApi="q">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.Ping.Dialog</item>
+
+        <!-- Custom styles -->
+        <item name="appBarLayoutStyle">@style/Widget.Ping.AppBar</item>
+        <item name="toolbarStyle">@style/Widget.Ping.Toolbar</item>
+        <item name="android:toolbarStyle">@style/Widget.Ping.Toolbar</item>
+        <item name="toolbarNavigationButtonStyle">@style/Widget.Ping.ToolbarNavigationButton
+        </item>
+        <item name="android:textViewStyle">@style/Widget.Ping.TextView</item>
+        <item name="titleTextAppearance">@style/TextAppearance.Ping.ToolbarTitle</item>
+        <item name="materialButtonStyle">@style/Widget.Ping.Button</item>
+        <item name="materialButtonOutlinedStyle">@style/Widget.Ping.Button.Outline</item>
+    </style>
+
+    <style name="ThemeOverlay.Ping.Dialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <item name="colorSurface">@color/relaynet_primary</item>
+        <item name="colorOnSurface">@color/black</item>
+        <item name="materialAlertDialogTitleTextStyle">@style/Widget.Ping.DialogTitle</item>
+        <item name="buttonBarPositiveButtonStyle">@style/Widget.Ping.DialogButton.Positive</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Widget.Ping.DialogButton.Negative</item>
+    </style>
+</resources>
