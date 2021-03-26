@@ -21,14 +21,4 @@ class AppModule(
 
     @Provides
     fun resources(): Resources = app.resources
-
-    @Provides
-    @Singleton
-    fun sharedPreferences(context: Context): SharedPreferences =
-        context.getSharedPreferences("ping", Context.MODE_PRIVATE)
-
-    @Provides
-    @Singleton
-    fun flowSharedPreferences(sharedPreferences: SharedPreferences) =
-        FlowSharedPreferences(sharedPreferences)
 }

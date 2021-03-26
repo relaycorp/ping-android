@@ -11,11 +11,11 @@ import tech.relaycorp.ping.common.di.DaggerAppComponent
 import tech.relaycorp.ping.domain.BootstrapData
 import javax.inject.Inject
 
-class App : Application() {
+open class App : Application() {
 
     val coroutineContext = Dispatchers.Default + SupervisorJob()
 
-    val component: AppComponent =
+    open val component: AppComponent =
         DaggerAppComponent.builder()
             .appModule(AppModule(this))
             .build()
@@ -28,7 +28,7 @@ class App : Application() {
 
         CoroutineScope(coroutineContext).launch {
             Awala.setup(this@App)
-            bootstrapData.bootstrapIfNeeded()
+            // bootstrapData.bootstrapIfNeeded()
         }
     }
 }
