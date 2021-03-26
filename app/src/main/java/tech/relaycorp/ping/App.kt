@@ -8,6 +8,8 @@ import kotlinx.coroutines.launch
 import tech.relaycorp.awaladroid.Awala
 import tech.relaycorp.ping.common.di.AppComponent
 import tech.relaycorp.ping.common.di.DaggerAppComponent
+import tech.relaycorp.ping.domain.BootstrapData
+import javax.inject.Inject
 
 class App : Application() {
 
@@ -18,6 +20,7 @@ class App : Application() {
             .appModule(AppModule(this))
             .build()
 
+    @Inject lateinit var bootstrapData: BootstrapData
 
     override fun onCreate() {
         super.onCreate()
@@ -25,6 +28,7 @@ class App : Application() {
 
         CoroutineScope(coroutineContext).launch {
             Awala.setup(this@App)
+            bootstrapData.bootstrapIfNeeded()
         }
     }
 }
