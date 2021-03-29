@@ -1,29 +1,23 @@
 package tech.relaycorp.ping.ui.common
 
+import java.text.DateFormat
 import java.time.LocalDate
 import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import java.util.*
 
 object DateTimeFormat {
 
     private val timeFormatter by lazy {
-        DateTimeFormatter.ofPattern("HH:mm:ss")
+        DateFormat.getTimeInstance(DateFormat.MEDIUM)
     }
     private val dateTimeFormatter by lazy {
-        DateTimeFormatter.ofPattern("MMM dd, HH:mm:ss")
+        DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
     }
 
-    private val dateTimeWithYearFormatter by lazy {
-        DateTimeFormatter.ofPattern("MMM dd, yyyy HH:mm:ss")
+    fun format(dateTime: ZonedDateTime) = when {
+        dateTime.isToday() -> timeFormatter.format(Date.from(dateTime.toInstant()))
+        else -> dateTimeFormatter.format(Date.from(dateTime.toInstant()))
     }
-
-    fun format(dateTime: ZonedDateTime) =
-        when {
-            dateTime.isToday() -> timeFormatter.format(dateTime)
-            dateTime.isThisYear() -> dateTimeFormatter.format(dateTime)
-            else -> dateTimeWithYearFormatter.format(dateTime)
-        }
 
     private fun ZonedDateTime.isToday() = toLocalDate() == LocalDate.now()
-    private fun ZonedDateTime.isThisYear() = year == LocalDate.now().year
 }
