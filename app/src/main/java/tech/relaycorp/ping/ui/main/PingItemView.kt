@@ -9,6 +9,7 @@ import tech.relaycorp.ping.R
 import tech.relaycorp.ping.domain.model.Ping
 import tech.relaycorp.ping.ui.BaseView
 import tech.relaycorp.ping.ui.common.DateTimeFormat
+import tech.relaycorp.ping.ui.ping.PingActivity
 
 @ModelView(autoLayout = ModelView.Size.MATCH_WIDTH_WRAP_HEIGHT)
 class PingItemView
@@ -29,16 +30,24 @@ constructor(
         sentAt.text = DateTimeFormat.format(item.sentAt)
 
         state.setImageResource(
-            when {
-                !item.pongReceived -> R.drawable.ic_check
-                else -> R.drawable.ic_double_check
+            when (item.state) {
+                Ping.State.Sent -> R.drawable.ic_check
+                Ping.State.SendAndReplied -> R.drawable.ic_double_check
+                Ping.State.Expired -> R.drawable.ic_expired
             }
         )
         state.contentDescription = resources.getString(
-            when {
-                !item.pongReceived -> R.string.ping_sent
-                else -> R.string.ping_sent_and_replied
+            when (item.state) {
+                Ping.State.Sent -> R.string.ping_sent
+                Ping.State.SendAndReplied -> R.string.ping_sent_and_replied
+                Ping.State.Expired -> R.string.ping_expired
             }
         )
+
+        setOnClickListener {
+            context.startActivity(
+                PingActivity.getIntent(context, pingId = item.pingId)
+            )
+        }
     }
 }

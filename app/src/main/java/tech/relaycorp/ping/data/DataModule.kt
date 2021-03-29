@@ -32,8 +32,10 @@ open class DataModule {
     fun appDatabase(context: Context) = appDatabaseOpen(context)
 
     @Provides
+    @Singleton
     fun pingDao(db: AppDatabase) = db.pingDao()
 
     @Provides
+    @Singleton
     fun publicPeerDao(db: AppDatabase) = db.publicPeerDao()
 }

@@ -15,4 +15,8 @@ interface PingDao {
     @Query("SELECT * FROM ping WHERE peerType = 'public' ORDER BY sentAt DESC")
     fun listPublic(): Flow<List<PingWithPublicPeer>>
 
+    @Transaction
+    @Query("SELECT * FROM ping WHERE pingId = :pingId LIMIT 1")
+    fun getPublic(pingId: String): Flow<PingWithPublicPeer?>
+
 }

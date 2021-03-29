@@ -1,12 +1,20 @@
 <resources>
-  <string name="app_name">Awala Ping</string>
+    <string name="app_name">Awala Ping</string>
 
-  <!-- Pings -->
-  <string name="ping">Ping</string>
-  <string name="ping_sent">Ping sent</string>
-  <string name="ping_sent_and_replied">Ping sent and pong received</string>
+    <!-- Common -->
+    <string name="copy">Copy</string>
+    <string name="copy_confirm">Copied to clipboard</string>
 
-  <!-- Peers -->
-  <string name="peer_public">Public Peer</string>
+    <!-- Pings -->
+    <string name="ping">Ping</string>
+    <string name="ping_sent">Ping sent</string>
+    <string name="ping_sent_and_replied">Ping sent and pong received</string>
+    <string name="ping_expired">Ping sent but pong expired</string>
+    <string name="ping_expires_at">Time out</string>
+    <string name="ping_id">ID</string>
+    <string name="ping_pong_received_at">Pong received at</string>
+
+    <!-- Peers -->
+    <string name="peer_public">Public Peer</string>
 
 </resources>

@@ -5,6 +5,7 @@ import tech.relaycorp.ping.AppModule
 import tech.relaycorp.ping.awala.AwalaModule
 import tech.relaycorp.ping.common.di.AppComponent
 import tech.relaycorp.ping.ui.main.MainActivityTest
+import tech.relaycorp.ping.ui.ping.PingActivityTest
 import javax.inject.Singleton
 
 @Singleton
@@ -19,4 +20,5 @@ interface AppTestComponent : AppComponent {
     // Tests
 
     fun inject(test: MainActivityTest)
+    fun inject(test: PingActivityTest)
 }

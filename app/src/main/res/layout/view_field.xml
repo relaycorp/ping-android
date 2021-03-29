@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="72dp">
+
+    <TextView
+        android:id="@+id/labelText"
+        android:layout_width="112dp"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="28dp"
+        android:textAppearance="@style/TextAppearance.Ping.Body2"
+        app:layout_constraintEnd_toStartOf="@id/valueText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Label" />
+
+    <TextView
+        android:id="@+id/valueText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:paddingVertical="28dp"
+        android:textAppearance="@style/TextAppearance.Ping.Body"
+        app:layout_constraintEnd_toStartOf="@id/copy"
+        app:layout_constraintStart_toEndOf="@id/labelText"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Value" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/copy"
+        style="@style/Widget.Ping.Button.Image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/copy"
+        app:icon="@drawable/ic_copy"
+        app:iconTint="?iconTint"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/valueText"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="?android:listDivider"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
