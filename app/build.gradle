@@ -18,13 +18,14 @@ android {
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "tech.relaycorp.ping.test.TestAndroidJUnitRunner"
 
         kapt {
             arguments {
                 arg("room.schemaLocation", "$projectDir/schemas".toString())
                 arg("room.incremental", "true")
             }
+            correctErrorTypes = true
         }
     }
 
@@ -107,6 +108,10 @@ dependencies {
     implementation 'androidx.room:room-runtime:2.2.6'
     kapt 'androidx.room:room-compiler:2.2.6'
     implementation 'androidx.room:room-ktx:2.2.6'
+
+    // Lists
+    implementation "com.airbnb.android:epoxy:4.4.4"
+    kapt "com.airbnb.android:epoxy-processor:4.4.4"
 
     // Testing
     testImplementation 'junit:junit:4.13.2'

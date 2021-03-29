@@ -7,4 +7,8 @@ data class Ping(
     val peer: Peer,
     val sentAt: ZonedDateTime,
     val pongReceivedAt: ZonedDateTime? = null
-)
+) {
+
+    val pongReceived get() = pongReceivedAt != null
+
+}

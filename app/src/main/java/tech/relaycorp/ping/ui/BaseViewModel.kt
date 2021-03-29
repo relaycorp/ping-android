@@ -6,5 +6,5 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.plus
 
 abstract class BaseViewModel : ViewModel() {
-    val ioScope = viewModelScope + Dispatchers.IO
+    val backgroundScope = viewModelScope + Dispatchers.IO
 }

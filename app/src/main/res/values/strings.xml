@@ -1,3 +1,12 @@
 <resources>
   <string name="app_name">Awala Ping</string>
+
+  <!-- Pings -->
+  <string name="ping">Ping</string>
+  <string name="ping_sent">Ping sent</string>
+  <string name="ping_sent_and_replied">Ping sent and pong received</string>
+
+  <!-- Peers -->
+  <string name="peer_public">Public Peer</string>
+
 </resources>

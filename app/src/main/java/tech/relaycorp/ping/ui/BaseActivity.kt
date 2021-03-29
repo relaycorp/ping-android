@@ -30,18 +30,11 @@ abstract class BaseActivity : AppCompatActivity() {
     override fun setContentView(layoutResID: Int) {
         super.setContentView(layoutResID)
         toolbarTitle?.text = title
-        /*
         appBar?.applyInsetter {
             type(statusBars = true) {
                 padding(top = true)
             }
         }
-        findViewById<View>(R.id.innerContainer)?.applyInsetter {
-            type(navigationBars = true) {
-                padding(bottom = true)
-            }
-        }
-         */
     }
 
     protected fun setupNavigation(
