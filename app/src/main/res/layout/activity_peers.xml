@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.peers.PeersActivity">
 
     <include layout="@layout/common_app_bar" />
 
@@ -15,14 +15,15 @@
         android:clipChildren="false"
         android:clipToPadding="false"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        tools:listitem="@layout/item_ping" />
+        tools:listitem="@layout/item_peer" />
 
-    <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
-        android:id="@+id/sendPing"
+    <com.leinardi.android.speeddial.SpeedDialView
+        android:id="@+id/addPeer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
-        android:layout_margin="24dp"
-        android:text="@string/ping"
-        app:icon="@drawable/ic_add" />
+        android:layout_margin="16dp"
+        android:contentDescription="@string/peer_add"
+        app:sdMainFabClosedSrc="@drawable/ic_add"
+        app:sdMainFabOpenedSrc="@drawable/ic_close" />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
