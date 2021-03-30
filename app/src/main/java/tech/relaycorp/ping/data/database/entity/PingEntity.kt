@@ -4,7 +4,9 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
+import tech.relaycorp.ping.domain.model.Peer
 import tech.relaycorp.ping.domain.model.PeerType
+import tech.relaycorp.ping.domain.model.Ping
 import java.time.ZonedDateTime
 
 @Entity(tableName = "ping")
@@ -13,6 +15,7 @@ data class PingEntity(
     val peerPrivateAddress: String,
     val peerType: PeerType,
     val sentAt: ZonedDateTime,
+    val expiresAt: ZonedDateTime,
     val pongReceivedAt: ZonedDateTime? = null
 )
 
@@ -22,4 +25,16 @@ data class PingWithPublicPeer(
         parentColumn = "peerPrivateAddress",
         entityColumn = "privateAddress"
     ) val publicPeer: PublicPeerEntity
-)
+) {
+    fun toModel() = Ping(
+        pingId = ping.pingId,
+        peer = Peer(
+            privateAddress = publicPeer.privateAddress,
+            alias = publicPeer.publicAddress,
+            peerType = PeerType.Public
+        ),
+        sentAt = ping.sentAt,
+        expiresAt = ping.expiresAt,
+        pongReceivedAt = ping.pongReceivedAt
+    )
+}

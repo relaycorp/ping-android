@@ -21,5 +21,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.ping.PingActivity"
+            android:label="@string/ping" />
     </application>
 </manifest>

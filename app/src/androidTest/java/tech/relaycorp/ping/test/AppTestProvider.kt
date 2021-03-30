@@ -21,9 +21,7 @@ object AppTestProvider {
         get() =
             Room
                 .inMemoryDatabaseBuilder(context, AppDatabase::class.java)
-                .setTransactionExecutor(testDispatcher.asExecutor())
-                .setQueryExecutor(testDispatcher.asExecutor())
                 .build()
 
-    private val testDispatcher by lazy { TestCoroutineDispatcher() }
+    // val testDispatcher by lazy { TestCoroutineDispatcher() }
 }

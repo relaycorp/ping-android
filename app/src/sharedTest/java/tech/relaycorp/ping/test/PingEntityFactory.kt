@@ -12,7 +12,8 @@ object PingEntityFactory {
             pingId = UUID.randomUUID().toString(),
             peerPrivateAddress = peer.privateAddress,
             peerType = PeerType.Public,
-            sentAt = ZonedDateTime.now()
+            sentAt = ZonedDateTime.now(),
+            expiresAt = ZonedDateTime.now().plusDays(1)
         )
     }
 }

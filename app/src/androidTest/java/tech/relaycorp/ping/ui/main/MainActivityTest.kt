@@ -3,7 +3,7 @@ package tech.relaycorp.ping.ui.main
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaContentDescriptionAssertions.assertContentDescription
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
-import kotlinx.coroutines.test.runBlockingTest
+import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -37,11 +37,13 @@ class MainActivityTest {
     }
 
     @Test
-    fun showsPings() = runBlockingTest {
+    fun showsPings() {
         val peer = PublicPeerEntityFactory.build()
-        publicPeerDao.save(peer)
         val ping = PingEntityFactory.build(peer)
-        pingDao.save(ping)
+        runBlocking {
+            publicPeerDao.save(peer)
+            pingDao.save(ping)
+        }
 
         testRule.start()
 

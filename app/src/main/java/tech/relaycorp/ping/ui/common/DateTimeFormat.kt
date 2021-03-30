@@ -14,10 +14,14 @@ object DateTimeFormat {
         DateFormat.getDateTimeInstance(DateFormat.MEDIUM, DateFormat.MEDIUM)
     }
 
-    fun format(dateTime: ZonedDateTime) = when {
-        dateTime.isToday() -> timeFormatter.format(Date.from(dateTime.toInstant()))
-        else -> dateTimeFormatter.format(Date.from(dateTime.toInstant()))
-    }
+    fun format(dateTime: ZonedDateTime?) =
+        dateTime?.let {
+            val date = Date.from(dateTime.toInstant())
+            when {
+                dateTime.isToday() -> timeFormatter.format(date)
+                else -> dateTimeFormatter.format(date)
+            }
+        } ?: ""
 
     private fun ZonedDateTime.isToday() = toLocalDate() == LocalDate.now()
 }

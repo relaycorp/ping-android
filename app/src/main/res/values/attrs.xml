@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Field">
+        <attr name="label" format="reference" />
+        <attr name="copyEnabled" format="boolean" />
+    </declare-styleable>
+</resources>
