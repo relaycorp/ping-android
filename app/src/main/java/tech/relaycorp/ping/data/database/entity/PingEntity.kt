@@ -4,7 +4,6 @@ import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Relation
-import tech.relaycorp.ping.domain.model.Peer
 import tech.relaycorp.ping.domain.model.PeerType
 import tech.relaycorp.ping.domain.model.Ping
 import java.time.ZonedDateTime
@@ -28,11 +27,7 @@ data class PingWithPublicPeer(
 ) {
     fun toModel() = Ping(
         pingId = ping.pingId,
-        peer = Peer(
-            privateAddress = publicPeer.privateAddress,
-            alias = publicPeer.publicAddress,
-            peerType = PeerType.Public
-        ),
+        peer = publicPeer.toModel(),
         sentAt = ping.sentAt,
         expiresAt = ping.expiresAt,
         pongReceivedAt = ping.pongReceivedAt

@@ -25,5 +25,8 @@
         <activity
             android:name=".ui.ping.PingActivity"
             android:label="@string/ping" />
+        <activity
+            android:name=".ui.peers.PeersActivity"
+            android:label="@string/peers" />
     </application>
 </manifest>

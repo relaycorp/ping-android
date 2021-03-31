@@ -38,7 +38,7 @@ abstract class BaseActivity : AppCompatActivity() {
     }
 
     protected fun setupNavigation(
-        @DrawableRes icon: Int = R.drawable.ic_close,
+        @DrawableRes icon: Int = R.drawable.ic_back,
         clickListener: (() -> Unit) = { finish() }
     ) {
         toolbar?.setNavigationIcon(icon)

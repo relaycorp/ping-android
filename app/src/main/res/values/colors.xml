@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <color name="relaynet_primary">#F2C94C</color>
+    <color name="blue">#0666EB</color>
+    <color name="blue_light">#E6F0FD</color>
 
-  <color name="white">#FFFFFF</color>
-  <color name="gray_light">#EDF0F2</color>
-  <color name="gray_dark">#666666</color>
-  <color name="black">#27302B</color>
-  <color name="red">#F44336</color>
+    <color name="white">#FFFFFF</color>
+    <color name="gray_lighter">#F3F4F5</color>
+    <color name="gray_light">#E5E9EE</color>
+    <color name="gray_dark">#666666</color>
+    <color name="black">#27302B</color>
+    <color name="red">#F44336</color>
 
-  <color name="ic_launcher_background">@color/white</color>
+    <color name="ic_launcher_background">@color/white</color>
 </resources>

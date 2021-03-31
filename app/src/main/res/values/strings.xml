@@ -15,6 +15,9 @@
     <string name="ping_pong_received_at">Pong received at</string>
 
     <!-- Peers -->
-    <string name="peer_public">Public Peer</string>
+    <string name="peers">Endpoints</string>
+    <string name="peer_public">Public Endpoint</string>
+    <string name="peer_private">Private Endpoint</string>
+    <string name="peer_add">Add Endpoint</string>
 
 </resources>
