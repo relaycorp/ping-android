@@ -28,5 +28,8 @@
         <activity
             android:name=".ui.peers.PeersActivity"
             android:label="@string/peers" />
+        <activity
+            android:name=".ui.peer.PeerActivity"
+            android:label="@string/peer" />
     </application>
 </manifest>

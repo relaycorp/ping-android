@@ -39,9 +39,17 @@ class PeersActivity : BaseActivity() {
         list.applyInsetter { type(navigationBars = true) { padding(bottom = true) } }
         addPeer.applyInsetter { type(navigationBars = true) { margin(bottom = true) } }
         list.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
+        setupFABMenu()
 
+        viewModel
+            .peers()
+            .onEach(this::updateList)
+            .launchIn(lifecycleScope)
+    }
+
+    private fun setupFABMenu() {
         addPeer.addActionItem(
-            SpeedDialActionItem.Builder(R.id.publicPeer, R.drawable.ic_public)
+            SpeedDialActionItem.Builder(PUBLIC_PEER_ITEM_ID, R.drawable.ic_public)
                 .setFabBackgroundColor(getColorFromAttr(R.attr.colorSurface))
                 .setFabImageTintColor(getColorFromAttr(R.attr.colorOnSurface))
                 .setLabelBackgroundColor(getColorCompat(android.R.color.transparent))
@@ -49,7 +57,7 @@ class PeersActivity : BaseActivity() {
                 .create()
         )
         addPeer.addActionItem(
-            SpeedDialActionItem.Builder(R.id.privatePeer, R.drawable.ic_private)
+            SpeedDialActionItem.Builder(PRIVATE_PEER_ITEM_ID, R.drawable.ic_private)
                 .setFabBackgroundColor(getColorFromAttr(R.attr.colorSurface))
                 .setFabImageTintColor(getColorCompat(R.color.gray_light))
                 .setLabelColor(getColorCompat(R.color.gray_light))
@@ -57,11 +65,6 @@ class PeersActivity : BaseActivity() {
                 .setLabel(R.string.peer_private)
                 .create()
         )
-
-        viewModel
-            .peers()
-            .onEach(this::updateList)
-            .launchIn(lifecycleScope)
     }
 
     private fun updateList(peers: List<Peer>) {
@@ -76,6 +79,9 @@ class PeersActivity : BaseActivity() {
     }
 
     companion object {
+        private const val PUBLIC_PEER_ITEM_ID = 1
+        private const val PRIVATE_PEER_ITEM_ID = 2
+
         fun getIntent(context: Context) = Intent(context, PeersActivity::class.java)
     }
 }

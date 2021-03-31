@@ -20,15 +20,20 @@ open class App : Application() {
             .appModule(AppModule(this))
             .build()
 
-    @Inject lateinit var bootstrapData: BootstrapData
+    @Inject
+    lateinit var bootstrapData: BootstrapData
 
     override fun onCreate() {
         super.onCreate()
         component.inject(this)
 
         CoroutineScope(coroutineContext).launch {
-            Awala.setup(this@App)
-            // bootstrapData.bootstrapIfNeeded()
+            setupAwala()
         }
+    }
+
+    protected open suspend fun setupAwala() {
+        Awala.setup(this)
+        // bootstrapData.bootstrapIfNeeded()
     }
 }

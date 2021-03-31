@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.peer.PeerActivity">
+
+    <include layout="@layout/common_app_bar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="32dp"
+                android:background="@drawable/circle"
+                android:backgroundTint="?colorSurface"
+                android:contentDescription="@string/peer_public"
+                android:padding="16dp"
+                android:src="@drawable/ic_public" />
+
+            <TextView
+                android:id="@+id/alias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginBottom="16dp"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                tools:text="example.org" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="?android:listDivider" />
+
+            <tech.relaycorp.ping.ui.common.FieldView
+                android:id="@+id/privateAddressField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:copyEnabled="true"
+                app:label="@string/peer_private_address" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
