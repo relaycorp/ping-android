@@ -1,4 +1,4 @@
-package tech.relaycorp.ping.ui.peer
+package tech.relaycorp.ping.ui.peers
 
 import android.content.Context
 import android.content.Intent

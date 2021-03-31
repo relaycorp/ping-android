@@ -8,11 +8,7 @@
 
     <TextView
         android:id="@+id/labelText"
-        android:layout_width="112dp"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="28dp"
-        android:textAppearance="@style/TextAppearance.Ping.Body2"
+        style="@style/Widget.Ping.Label"
         app:layout_constraintEnd_toStartOf="@id/valueText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"

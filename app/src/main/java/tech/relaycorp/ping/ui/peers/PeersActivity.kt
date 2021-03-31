@@ -65,6 +65,14 @@ class PeersActivity : BaseActivity() {
                 .setLabel(R.string.peer_private)
                 .create()
         )
+        addPeer.setOnActionSelectedListener {
+            when (it.id) {
+                PUBLIC_PEER_ITEM_ID ->
+                    startActivity(AddPublicPeerActivity.getIntent(this))
+            }
+            addPeer.close()
+            true
+        }
     }
 
     private fun updateList(peers: List<Peer>) {

@@ -1,5 +1,7 @@
 <resources>
 
+    <style name="Widget.Ping" parent="" />
+
     <style name="Widget.Ping.AppBar" parent="Widget.MaterialComponents.AppBarLayout.Surface">
         <item name="elevation">0dp</item>
     </style>
@@ -28,6 +30,9 @@
     <style name="Widget.Ping.Button" parent="Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:textAllCaps">false</item>
         <item name="android:letterSpacing">0.025</item>
+        <item name="android:backgroundTint">?colorSecondary</item>
+        <item name="android:textColor">?colorOnSecondary</item>
+        <item name="iconTint">?colorOnSecondary</item>
     </style>
 
     <style name="Widget.Ping.Button.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -40,6 +45,7 @@
         <item name="android:minWidth">0dp</item>
         <item name="iconPadding">0dp</item>
         <item name="iconTint">?iconTint</item>
+        <item name="android:backgroundTint">@android:color/transparent</item>
     </style>
 
     <style name="Widget.Ping.ExtendedFAB" parent="Widget.MaterialComponents.ExtendedFloatingActionButton">
@@ -70,5 +76,17 @@
 
     <style name="Widget.Ping.DialogButton.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
         <item name="android:textColor">?colorOnSurface</item>
+    </style>
+
+    <!-- Fields / Form -->
+
+    <style name="Widget.Ping.Label">
+        <item name="android:layout_width">112dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:paddingTop">28dp</item>
+        <item name="android:paddingBottom">28dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Ping.Body2</item>
     </style>
 </resources>

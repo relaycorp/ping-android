@@ -1,4 +1,4 @@
-package tech.relaycorp.ping.ui.peer
+package tech.relaycorp.ping.ui.peers
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
@@ -18,6 +18,7 @@ import tech.relaycorp.ping.test.BaseActivityTestRule
 import tech.relaycorp.ping.test.PublicPeerEntityFactory
 import tech.relaycorp.ping.test.WaitAssertions.suspendWaitFor
 import tech.relaycorp.ping.test.WaitAssertions.waitFor
+import tech.relaycorp.ping.ui.peers.PeerActivity
 import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)

@@ -1,4 +1,4 @@
-package tech.relaycorp.ping.ui.peer
+package tech.relaycorp.ping.ui.peers
 
 import kotlinx.coroutines.flow.*
 import tech.relaycorp.gateway.ui.BaseViewModel
