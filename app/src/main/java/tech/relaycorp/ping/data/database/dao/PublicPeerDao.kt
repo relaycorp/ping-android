@@ -17,4 +17,8 @@ interface PublicPeerDao {
     @Transaction
     @Query("SELECT * FROM public_peer WHERE deleted = 0 ORDER BY publicAddress DESC")
     fun list(): Flow<List<PublicPeerEntity>>
+
+    @Transaction
+    @Query("SELECT * FROM public_peer WHERE privateAddress = :privateAddress LIMIT 1")
+    fun get(privateAddress: String): Flow<PublicPeerEntity?>
 }

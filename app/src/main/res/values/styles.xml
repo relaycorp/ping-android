@@ -68,4 +68,7 @@
         <item name="android:layout_marginStart">8dp</item>
     </style>
 
+    <style name="Widget.Ping.DialogButton.Neutral" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">?colorOnSurface</item>
+    </style>
 </resources>
