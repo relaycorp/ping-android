@@ -51,30 +51,21 @@ class AddPublicPeerActivity : BaseActivity() {
         }
 
         viewModel
-            .hasCertificate()
+            .certificate()
             .onEach {
-                certificateButton.isVisible = !it
-                certificateName.isVisible = it
-                certificateClear.isVisible = it
-            }
-            .launchIn(lifecycleScope)
-
-        viewModel
-            .saveEnabled()
-            .onEach {
-                toolbar.menu.findItem(R.id.save).isEnabled = it
+                val hasCertificate = it.isPresent
+                certificateButton.isVisible = !hasCertificate
+                certificateName.isVisible = hasCertificate
+                certificateName.text = if (hasCertificate) {
+                    it.get().ifBlank { getString(R.string.peer_certificate_picked) }
+                } else ""
+                certificateClear.isVisible = hasCertificate
             }
             .launchIn(lifecycleScope)
 
         viewModel
             .errors()
-            .onEach {
-                messageManager.showError(
-                    when (it) {
-                        AddPublicPeerViewModel.Error.Save -> R.string.peer_add_error
-                    }
-                )
-            }
+            .onEach(this::showError)
             .launchIn(lifecycleScope)
 
         viewModel
@@ -97,6 +88,21 @@ class AddPublicPeerActivity : BaseActivity() {
                 type = "*/*"
             },
             PICK_CERTIFICATE
+        )
+    }
+
+    private fun showError(error: AddPublicPeerViewModel.Error) {
+        messageManager.showError(
+            when (error) {
+                AddPublicPeerViewModel.Error.InvalidAddress ->
+                    R.string.peer_add_invalid_address
+                AddPublicPeerViewModel.Error.MissingCertificate ->
+                    R.string.peer_add_missing_certificate
+                AddPublicPeerViewModel.Error.InvalidCertificate ->
+                    R.string.peer_add_invalid_certificate
+                AddPublicPeerViewModel.Error.GenericSave ->
+                    R.string.peer_add_error
+            }
         )
     }
 

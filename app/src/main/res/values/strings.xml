@@ -30,7 +30,10 @@
     <string name="peer_address_hint">Type an address</string>
     <string name="peer_certificate_label">Identity Certificate *</string>
     <string name="peer_certificate_button">Upload certificate</string>
-    <string name="peer_certificate_added">Certificate picked</string>
+    <string name="peer_certificate_picked">Certificate picked</string>
     <string name="peer_add_error">Error saving new peer</string>
+    <string name="peer_add_invalid_address">Invalid Address</string>
+    <string name="peer_add_missing_certificate">Missing Identity Certificate</string>
+    <string name="peer_add_invalid_certificate">Invalid Identity Certificate</string>
 
 </resources>

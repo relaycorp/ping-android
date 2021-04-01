@@ -64,9 +64,9 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/peer_certificate_added"
                 android:textColor="?colorPrimary"
                 android:visibility="gone"
+                tools:text="file.der"
                 tools:visibility="visible" />
 
             <com.google.android.material.button.MaterialButton
