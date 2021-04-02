@@ -1,18 +1,16 @@
 package tech.relaycorp.ping.ui.ping
 
+import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import tech.relaycorp.gateway.ui.BaseViewModel
 import tech.relaycorp.ping.common.Logging.logger
 import tech.relaycorp.ping.common.PublishFlow
 import tech.relaycorp.ping.domain.GetDefaultPeer
-import tech.relaycorp.ping.domain.ObservePeers
 import tech.relaycorp.ping.domain.SendPing
 import tech.relaycorp.ping.domain.model.Peer
 import tech.relaycorp.ping.ui.common.Click
-import tech.relaycorp.ping.ui.common.Finish
 import tech.relaycorp.ping.ui.common.clicked
-import tech.relaycorp.ping.ui.common.finish
 import java.util.*
 import java.util.logging.Level
 import javax.inject.Inject
@@ -49,8 +47,8 @@ class SendPingViewModel
     private val _errors = PublishFlow<Error>()
     fun errors() = _errors.asFlow()
 
-    private val _finish = PublishFlow<Finish>()
-    fun finish() = _finish.asFlow()
+    private val _finishToPing = PublishFlow<String>()
+    fun finishToPing() = _finishToPing.asFlow()
 
     init {
         peerPicks
@@ -61,8 +59,11 @@ class SendPingViewModel
             .asFlow()
             .filter { _sendEnabled.value }
             .onEach {
-                sendPing.send(peerPicks.value.get(), expiresAtChanges.value.toKotlinDuration())
-                _finish.finish()
+                val pingId = sendPing.send(
+                    peerPicks.value.get(),
+                    expiresAtChanges.value.toKotlinDuration()
+                )
+                _finishToPing.sendBlocking(pingId)
             }
             .catch { exp ->
                 logger.log(Level.WARNING, "Error sending ping", exp)

@@ -17,6 +17,7 @@ import tech.relaycorp.ping.common.di.ViewModelFactory
 import tech.relaycorp.ping.domain.model.Peer
 import tech.relaycorp.ping.ui.BaseActivity
 import tech.relaycorp.ping.ui.common.SimpleItemSelectedListener
+import tech.relaycorp.ping.ui.common.getColorStateListCompat
 import tech.relaycorp.ping.ui.peers.PeersActivity
 import javax.inject.Inject
 
@@ -36,6 +37,7 @@ class SendPingActivity : BaseActivity() {
         setupNavigation()
 
         toolbar.inflateMenu(R.menu.send_ping)
+        toolbar.menu.findItem(R.id.send).icon.setTintList(getColorStateListCompat(R.color.primary))
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.send -> viewModel.sendClicked()
@@ -44,6 +46,9 @@ class SendPingActivity : BaseActivity() {
         }
 
         toButton.setOnClickListener {
+            openPeerPicker()
+        }
+        toPeer.setOnClickListener {
             openPeerPicker()
         }
 
@@ -74,8 +79,11 @@ class SendPingActivity : BaseActivity() {
             .launchIn(lifecycleScope)
 
         viewModel
-            .finish()
-            .onEach { finish() }
+            .finishToPing()
+            .onEach {
+                startActivity(PingActivity.getIntent(this, it))
+                finish()
+            }
             .launchIn(lifecycleScope)
 
         results

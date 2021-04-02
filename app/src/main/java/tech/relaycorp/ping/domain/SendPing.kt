@@ -24,7 +24,7 @@ class SendPing
 ) {
 
     @Throws(SendPingException::class)
-    suspend fun send(peer: Peer, duration: Duration) {
+    suspend fun send(peer: Peer, duration: Duration): String {
         val senderAddress = appPreferences.firstPartyEndpointAddress().first()
             ?: throw SendPingException("Sender not set")
         val sender = firstPartyEndpointLoad.load(senderAddress)
@@ -45,7 +45,7 @@ class SendPing
             authorization.pdaChainSerialized
         )
         val outgoingMessage = outgoingMessageBuilder.build(
-            "application/vnd.awala.ping-v1.ping",
+            AwalaPing.V1.PingType,
             pingMessageSerialized,
             sender,
             recipient,
@@ -68,6 +68,8 @@ class SendPing
         pingDao.save(ping)
 
         appPreferences.setLastRecipient(peer.privateAddress, peer.peerType)
+
+        return ping.pingId
     }
 }
 

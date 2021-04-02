@@ -75,7 +75,7 @@ class SendPingTest {
         subject.send(peer, duration)
 
         verify(outgoingMessageBuilder).build(
-            eq("application/vnd.awala.ping-v1.ping"),
+            eq(AwalaPing.V1.PingType),
             eq(pingMessageSerialized),
             eq(sender),
             eq(recipient),

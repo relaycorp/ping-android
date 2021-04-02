@@ -15,7 +15,10 @@ class GetDefaultPeer
     suspend fun get(): Peer? {
         return appPreferences.lastRecipient().first()
             ?.let { lastRecipient ->
-                publicPeerDao.get(lastRecipient.first).first()?.toModel()
+                val entity = publicPeerDao.get(lastRecipient.first).first()
+                if (entity != null && !entity.deleted) {
+                    entity.toModel()
+                } else null
             }
             ?: publicPeerDao.list().first().firstOrNull()?.toModel()
     }

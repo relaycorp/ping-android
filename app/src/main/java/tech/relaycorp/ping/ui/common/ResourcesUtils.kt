@@ -9,6 +9,8 @@ import androidx.core.content.res.ResourcesCompat
 fun Context.getColorCompat(@ColorRes colorRes: Int) =
     ResourcesCompat.getColor(resources, colorRes, theme)
 
+fun Context.getColorStateListCompat(@ColorRes colorRes: Int) =
+    ResourcesCompat.getColorStateList(resources, colorRes, theme)
 
 fun Context.getColorFromAttr(@AttrRes attr: Int): Int {
     val typedValue = TypedValue()
