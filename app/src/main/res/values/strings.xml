@@ -8,6 +8,7 @@
     <string name="cancel">Cancel</string>
     <string name="clear">Clear</string>
     <string name="save">Save</string>
+    <string name="send">Send</string>
 
     <!-- Pings -->
     <string name="ping">Ping</string>
@@ -17,10 +18,13 @@
     <string name="ping_expires_at">Time out</string>
     <string name="ping_id">ID</string>
     <string name="ping_pong_received_at">Pong received at</string>
+    <string name="ping_to">To *</string>
+    <string name="ping_send_error">Error sending ping</string>
 
     <!-- Peers -->
     <string name="peer">Endpoint</string>
     <string name="peers">Endpoints</string>
+    <string name="peers_picker">Select an endpoint</string>
     <string name="peer_public">Public Endpoint</string>
     <string name="peer_private">Private Endpoint</string>
     <string name="peer_add">Add Endpoint</string>
@@ -35,5 +39,11 @@
     <string name="peer_add_invalid_address">Invalid Address</string>
     <string name="peer_add_missing_certificate">Missing Identity Certificate</string>
     <string name="peer_add_invalid_certificate">Invalid Identity Certificate</string>
+
+    <!-- Units -->
+    <string name="minutes">Minutes</string>
+    <string name="hours">Hours</string>
+    <string name="days">Days</string>
+    <string name="months">Months</string>
 
 </resources>

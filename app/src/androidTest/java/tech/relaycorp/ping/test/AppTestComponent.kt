@@ -9,6 +9,7 @@ import tech.relaycorp.ping.ui.peers.AddPublicPeerActivityTest
 import tech.relaycorp.ping.ui.peers.PeerActivityTest
 import tech.relaycorp.ping.ui.peers.PeersActivityTest
 import tech.relaycorp.ping.ui.ping.PingActivityTest
+import tech.relaycorp.ping.ui.ping.SendPingActivityTest
 import javax.inject.Singleton
 
 @Singleton
@@ -27,4 +28,5 @@ interface AppTestComponent : AppComponent {
     fun inject(test: PeerActivityTest)
     fun inject(test: PeersActivityTest)
     fun inject(test: PingActivityTest)
+    fun inject(test: SendPingActivityTest)
 }
