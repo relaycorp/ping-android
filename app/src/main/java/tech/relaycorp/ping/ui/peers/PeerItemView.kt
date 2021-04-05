@@ -2,6 +2,7 @@ package tech.relaycorp.ping.ui.peers
 
 import android.content.Context
 import android.util.AttributeSet
+import com.airbnb.epoxy.CallbackProp
 import com.airbnb.epoxy.ModelProp
 import com.airbnb.epoxy.ModelView
 import kotlinx.android.synthetic.main.item_peer.view.*
@@ -25,9 +26,10 @@ constructor(
     @ModelProp
     fun setItem(item: Peer) {
         alias.text = item.alias
+    }
 
-        setOnClickListener {
-            context.startActivity(PeerActivity.getIntent(context, item.privateAddress))
-        }
+    @CallbackProp
+    fun setClickListener(listener: (() -> Unit)?) {
+        setOnClickListener { listener?.invoke() }
     }
 }

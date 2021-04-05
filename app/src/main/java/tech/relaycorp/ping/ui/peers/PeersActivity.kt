@@ -1,8 +1,10 @@
 package tech.relaycorp.ping.ui.peers
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -11,6 +13,7 @@ import com.leinardi.android.speeddial.SpeedDialActionItem
 import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.android.synthetic.main.activity_main.list
 import kotlinx.android.synthetic.main.activity_peers.*
+import kotlinx.android.synthetic.main.common_app_bar.*
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import tech.relaycorp.ping.R
@@ -30,11 +33,17 @@ class PeersActivity : BaseActivity() {
         ViewModelProvider(this, viewModelFactory).get(PeersViewModel::class.java)
     }
 
+    private val isPicker by lazy { intent.getBooleanExtra(EXTRA_PICKER, false) }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         component.inject(this)
         setContentView(R.layout.activity_peers)
-        setupNavigation()
+        setupNavigation(
+            if (isPicker) R.drawable.ic_close else R.drawable.ic_back
+        )
+
+        toolbarTitle.text = getString(if (isPicker) R.string.peers_picker else R.string.peers)
 
         list.applyInsetter { type(navigationBars = true) { padding(bottom = true) } }
         addPeer.applyInsetter { type(navigationBars = true) { margin(bottom = true) } }
@@ -73,6 +82,7 @@ class PeersActivity : BaseActivity() {
             addPeer.close()
             true
         }
+        addPeer.isVisible = !isPicker
     }
 
     private fun updateList(peers: List<Peer>) {
@@ -81,15 +91,37 @@ class PeersActivity : BaseActivity() {
                 peerItemView {
                     id(peer.privateAddress)
                     item(peer)
+                    clickListener {
+                        if (isPicker) {
+                            finishWithResult(peer)
+                        } else {
+                            openPeer(peer)
+                        }
+                    }
                 }
             }
         }
+    }
+
+    private fun openPeer(peer: Peer) {
+        startActivity(PeerActivity.getIntent(this, peer.privateAddress))
+    }
+
+    private fun finishWithResult(peer: Peer) {
+        setResult(Activity.RESULT_OK, Intent().putExtra(EXTRA_PEER, peer))
+        finish()
     }
 
     companion object {
         private const val PUBLIC_PEER_ITEM_ID = 1
         private const val PRIVATE_PEER_ITEM_ID = 2
 
+        private const val EXTRA_PICKER = "picker"
+        const val EXTRA_PEER = "peer"
+
         fun getIntent(context: Context) = Intent(context, PeersActivity::class.java)
+
+        fun getPickerIntent(context: Context) =
+            getIntent(context).putExtra(EXTRA_PICKER, true)
     }
 }

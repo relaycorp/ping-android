@@ -30,6 +30,7 @@ class PingActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         component.inject(this)
         setContentView(R.layout.activity_ping)
+        setupNavigation()
 
         viewModel
             .ping()

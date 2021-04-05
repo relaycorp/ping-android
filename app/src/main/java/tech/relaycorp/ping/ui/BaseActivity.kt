@@ -14,6 +14,7 @@ import tech.relaycorp.ping.App
 import tech.relaycorp.ping.R
 import tech.relaycorp.ping.common.PublishFlow
 import tech.relaycorp.ping.ui.common.ActivityResult
+import tech.relaycorp.ping.ui.common.loading.LoadingManager
 
 abstract class BaseActivity : AppCompatActivity() {
 
@@ -21,6 +22,7 @@ abstract class BaseActivity : AppCompatActivity() {
     val component by lazy { app.component.activityComponent() }
 
     protected val messageManager by lazy { MessageManager(this) }
+    protected val loadingManager by lazy { LoadingManager(this) }
 
     protected val results get() = _results.asFlow()
     private val _results = PublishFlow<ActivityResult>()
@@ -29,7 +31,7 @@ abstract class BaseActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         // Setup edge-to-edge UI
-        WindowCompat.setDecorFitsSystemWindows(window, true)
+        WindowCompat.setDecorFitsSystemWindows(window, false)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

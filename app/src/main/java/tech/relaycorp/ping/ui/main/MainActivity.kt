@@ -15,6 +15,7 @@ import tech.relaycorp.ping.common.di.ViewModelFactory
 import tech.relaycorp.ping.domain.model.Ping
 import tech.relaycorp.ping.ui.BaseActivity
 import tech.relaycorp.ping.ui.peers.PeersActivity
+import tech.relaycorp.ping.ui.ping.SendPingActivity
 import javax.inject.Inject
 
 class MainActivity : BaseActivity() {
@@ -41,6 +42,10 @@ class MainActivity : BaseActivity() {
                 R.id.peers -> openPeers()
             }
             true
+        }
+
+        sendPing.setOnClickListener {
+            startActivity(SendPingActivity.getIntent(this))
         }
 
         viewModel
