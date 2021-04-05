@@ -19,6 +19,7 @@ class ReceivePong
     suspend fun receive(incomingMessage: IncomingMessage) {
         if (incomingMessage.type != AwalaPing.V1.PongType) {
             incomingMessage.ack()
+            return
         }
 
         val pingId = pingSerialization.extractPingIdFromPong(
@@ -26,6 +27,7 @@ class ReceivePong
         )
         val ping = pingDao.getPublic(pingId).first()?.ping ?: run {
             logger.log(Level.INFO, "Received pong for unknown ping $pingId")
+            incomingMessage.ack()
             return@receive
         }
 
