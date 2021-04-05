@@ -21,10 +21,14 @@ class ReadFile
                 .query(uri, null, null, null, null)
                 ?.use { cursor ->
                     if (cursor.moveToFirst()) {
-                        return cursor.getString(cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME))
+                        val index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME)
+                        if (index != -1) {
+                            return cursor.getString(index)
+                        }
                     }
                 }
         }
+
         return uri.path?.split("/")?.lastOrNull() ?: ""
     }
 }
