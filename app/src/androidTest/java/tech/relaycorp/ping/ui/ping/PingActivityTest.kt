@@ -56,6 +56,8 @@ class PingActivityTest {
 
         assertDisplayed(peer.publicAddress)
         assertDisplayed(ping.pingId)
+        assertDisplayed(R.string.ping_state_sent)
+        assertDisplayed(DateTimeFormat.format(ping.sentAt))
         assertDisplayed(DateTimeFormat.format(ping.expiresAt))
         assertNotDisplayed(R.string.ping_pong_received_at)
     }
@@ -75,6 +77,8 @@ class PingActivityTest {
 
         assertDisplayed(peer.publicAddress)
         assertDisplayed(ping.pingId)
+        assertDisplayed(R.string.ping_state_replied)
+        assertDisplayed(DateTimeFormat.format(ping.sentAt))
         assertDisplayed(DateTimeFormat.format(ping.expiresAt))
         assertDisplayed(DateTimeFormat.format(ping.pongReceivedAt))
     }
