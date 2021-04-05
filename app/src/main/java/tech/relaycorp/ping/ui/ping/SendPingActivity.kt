@@ -110,9 +110,18 @@ class SendPingActivity : BaseActivity() {
         )
 
         expiresAtUnit.onItemSelectedListener = SimpleItemSelectedListener { position ->
+            val oldValue = expiresAtValue.selectedItem
             val unit = ExpireDuration.Unit.values()[position]
             valueAdapter.clear()
             valueAdapter.addAll(unit.valueOptions)
+            // Keep old value if possible
+            expiresAtValue.setSelection(
+                if (unit.valueOptions.contains(oldValue)) {
+                    unit.valueOptions.indexOf(oldValue)
+                } else {
+                    0
+                }
+            )
             viewModel.expiresAtChanged(
                 ExpireDuration(
                     unit.valueOptions[expiresAtValue.selectedItemPosition],
