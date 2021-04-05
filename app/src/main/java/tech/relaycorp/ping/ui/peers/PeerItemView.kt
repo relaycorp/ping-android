@@ -25,5 +25,9 @@ constructor(
     @ModelProp
     fun setItem(item: Peer) {
         alias.text = item.alias
+
+        setOnClickListener {
+            context.startActivity(PeerActivity.getIntent(context, item.privateAddress))
+        }
     }
 }

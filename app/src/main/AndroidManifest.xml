@@ -29,7 +29,11 @@
             android:name=".ui.peers.PeersActivity"
             android:label="@string/peers" />
         <activity
-            android:name=".ui.peer.PeerActivity"
+            android:name=".ui.peers.PeerActivity"
             android:label="@string/peer" />
+        <activity
+            android:name=".ui.peers.AddPublicPeerActivity"
+            android:label="@string/peer_public"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 </manifest>

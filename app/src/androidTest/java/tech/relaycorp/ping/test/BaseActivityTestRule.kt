@@ -19,6 +19,7 @@ class BaseActivityTestRule<T : Activity>(
     private val clearPreferencesRule: ClearPreferencesRule = ClearPreferencesRule()
     private val clearDatabaseRule: ClearTestDatabaseRule = ClearTestDatabaseRule()
     private val clearFilesRule: ClearFilesRule = ClearFilesRule()
+    private val intentsRule: IntentsRule = IntentsRule()
     private val activityTestRule: ActivityTestRule<T> = ActivityTestRule(
         activityClass.java,
         true,
@@ -30,6 +31,7 @@ class BaseActivityTestRule<T : Activity>(
             .around(clearPreferencesRule)
             .around(clearDatabaseRule)
             .around(clearFilesRule)
+            .around(intentsRule)
             .apply(base, description)
     }
 
