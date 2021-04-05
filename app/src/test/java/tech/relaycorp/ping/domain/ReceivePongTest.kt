@@ -26,6 +26,7 @@ class ReceivePongTest {
         val message = mock<IncomingMessage>()
         whenever(message.type).thenReturn(AwalaPing.V1.PongType)
         whenever(message.content).thenReturn(ByteArray(0))
+        whenever(message.ack).thenReturn(suspend {})
 
         val pingId = "12345"
         whenever(pingSerialization.extractPingIdFromPong(any())).thenReturn(pingId)
@@ -41,5 +42,6 @@ class ReceivePongTest {
             val diff = ChronoUnit.SECONDS.between(ZonedDateTime.now(), it.pongReceivedAt)
             assertTrue(diff in 0..1)
         })
+        verify(message).ack
     }
 }

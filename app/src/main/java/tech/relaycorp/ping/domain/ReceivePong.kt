@@ -17,7 +17,9 @@ class ReceivePong
 ) {
 
     suspend fun receive(incomingMessage: IncomingMessage) {
-        if (incomingMessage.type != AwalaPing.V1.PongType) return
+        if (incomingMessage.type != AwalaPing.V1.PongType) {
+            incomingMessage.ack()
+        }
 
         val pingId = pingSerialization.extractPingIdFromPong(
             incomingMessage.content
@@ -27,8 +29,12 @@ class ReceivePong
             return@receive
         }
 
-        pingDao.save(
-            ping.copy(pongReceivedAt = ZonedDateTime.now())
-        )
+        if (ping.pongReceivedAt == null) {
+            pingDao.save(
+                ping.copy(pongReceivedAt = ZonedDateTime.now())
+            )
+        }
+
+        incomingMessage.ack()
     }
 }

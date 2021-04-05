@@ -74,6 +74,17 @@ class SendPingActivity : BaseActivity() {
             .launchIn(lifecycleScope)
 
         viewModel
+            .sending()
+            .onEach {
+                if (it) {
+                    loadingManager.show(R.string.ping_sending)
+                } else {
+                    loadingManager.hide()
+                }
+            }
+            .launchIn(lifecycleScope)
+
+        viewModel
             .errors()
             .onEach(this::showError)
             .launchIn(lifecycleScope)

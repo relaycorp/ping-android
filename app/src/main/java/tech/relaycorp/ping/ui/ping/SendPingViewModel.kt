@@ -44,6 +44,9 @@ class SendPingViewModel
     private val _sendEnabled = MutableStateFlow(false)
     fun sendEnabled(): Flow<Boolean> = _sendEnabled.asStateFlow()
 
+    private val _sending = MutableStateFlow(false)
+    fun sending(): Flow<Boolean> = _sending.asStateFlow()
+
     private val _errors = PublishFlow<Error>()
     fun errors() = _errors.asFlow()
 
@@ -59,14 +62,19 @@ class SendPingViewModel
             .asFlow()
             .filter { _sendEnabled.value }
             .onEach {
+                _sendEnabled.value = false
+                _sending.value = true
                 val pingId = sendPing.send(
                     peerPicks.value.get(),
                     expiresAtChanges.value.toKotlinDuration()
                 )
+                _sending.value = false
                 _finishToPing.sendBlocking(pingId)
             }
             .catch { exp ->
                 logger.log(Level.WARNING, "Error sending ping", exp)
+                _sending.value = false
+                _sendEnabled.value = true
                 _errors.send(Error.Sending)
             }
             .launchIn(backgroundScope)

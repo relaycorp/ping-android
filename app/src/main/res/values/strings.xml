@@ -20,6 +20,7 @@
     <string name="ping_pong_received_at">Pong received at</string>
     <string name="ping_to">To *</string>
     <string name="ping_send_error">Error sending ping</string>
+    <string name="ping_sending">Sending ping</string>
 
     <!-- Peers -->
     <string name="peer">Endpoint</string>
