@@ -14,6 +14,7 @@ import tech.relaycorp.ping.R
 import tech.relaycorp.ping.common.di.ViewModelFactory
 import tech.relaycorp.ping.domain.model.Ping
 import tech.relaycorp.ping.ui.BaseActivity
+import tech.relaycorp.ping.ui.common.dummyItemView
 import tech.relaycorp.ping.ui.peers.PeersActivity
 import tech.relaycorp.ping.ui.ping.SendPingActivity
 import javax.inject.Inject
@@ -65,6 +66,10 @@ class MainActivity : BaseActivity() {
 
     private fun updateList(pings: List<Ping>) {
         list.withModels {
+            dummyItemView {
+                id("top")
+            }
+
             pings.forEach { ping ->
                 pingItemView {
                     id(ping.pingId)
