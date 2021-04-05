@@ -1,4 +1,4 @@
-package tech.relaycorp.gateway.ui.common
+package tech.relaycorp.ping.ui.common
 
 import android.app.Activity
 import android.view.View

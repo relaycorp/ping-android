@@ -4,7 +4,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
-import tech.relaycorp.gateway.ui.BaseViewModel
+import tech.relaycorp.ping.ui.BaseViewModel
 import tech.relaycorp.ping.domain.ObservePings
 import tech.relaycorp.ping.domain.model.Ping
 import javax.inject.Inject

@@ -8,7 +8,9 @@ class ObservePings
 @Inject constructor(
     private val pingDao: PingDao
 ) {
-    fun observe() = pingDao.listPublic().map { list ->
-        list.map { it.toModel() }
-    }
+    fun observe() =
+        pingDao.listPublic()
+            .map { list ->
+                list.map { it.toModel() }
+            }
 }
