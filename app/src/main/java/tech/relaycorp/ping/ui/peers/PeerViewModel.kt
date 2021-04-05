@@ -1,7 +1,7 @@
 package tech.relaycorp.ping.ui.peers
 
 import kotlinx.coroutines.flow.*
-import tech.relaycorp.gateway.ui.BaseViewModel
+import tech.relaycorp.ping.ui.BaseViewModel
 import tech.relaycorp.ping.common.PublishFlow
 import tech.relaycorp.ping.common.element
 import tech.relaycorp.ping.domain.DeletePeer

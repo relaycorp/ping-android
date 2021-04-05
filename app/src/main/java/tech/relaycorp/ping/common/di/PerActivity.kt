@@ -1,4 +1,4 @@
-package tech.relaycorp.gateway.common.di
+package tech.relaycorp.ping.common.di
 
 import javax.inject.Scope
 

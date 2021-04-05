@@ -10,8 +10,7 @@ class GetPing
     private val pingDao: PingDao
 ) {
     fun get(pingId: String) =
-        pingDao
-            .getPublic(pingId)
+        pingDao.getPublic(pingId)
             .filterNotNull()
             .map { it.toModel() }
 }
