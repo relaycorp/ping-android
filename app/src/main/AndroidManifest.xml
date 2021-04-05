@@ -39,5 +39,11 @@
             android:name=".ui.ping.SendPingActivity"
             android:label="@string/peer_public"
             android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".ui.main.AboutActivity"
+            android:label="@string/about" />
+        <activity
+            android:name=".ui.main.LicensesActivity"
+            android:label="@string/about_licenses" />
     </application>
 </manifest>

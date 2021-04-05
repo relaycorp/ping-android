@@ -41,6 +41,7 @@ class MainActivity : BaseActivity() {
         toolbar.setOnMenuItemClickListener {
             when (it.itemId) {
                 R.id.peers -> openPeers()
+                R.id.about -> openAbout()
             }
             true
         }
@@ -57,6 +58,10 @@ class MainActivity : BaseActivity() {
 
     private fun openPeers() {
         startActivity(PeersActivity.getIntent(this))
+    }
+
+    private fun openAbout() {
+        startActivity(AboutActivity.getIntent(this))
     }
 
     private fun updateList(pings: List<Ping>) {
