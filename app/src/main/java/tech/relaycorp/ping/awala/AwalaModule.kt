@@ -7,7 +7,6 @@ import tech.relaycorp.awaladroid.endpoint.FirstPartyEndpoint
 import tech.relaycorp.awaladroid.endpoint.PublicThirdPartyEndpoint
 import tech.relaycorp.awaladroid.endpoint.ThirdPartyEndpoint
 import tech.relaycorp.awaladroid.messaging.OutgoingMessage
-import tech.relaycorp.awaladroid.messaging.ParcelId
 import java.time.ZonedDateTime
 
 @Module
@@ -42,11 +41,10 @@ class AwalaModule {
                 content: ByteArray,
                 senderEndpoint: FirstPartyEndpoint,
                 recipientEndpoint: ThirdPartyEndpoint,
-                parcelExpiryDate: ZonedDateTime,
-                parcelId: ParcelId
+                parcelExpiryDate: ZonedDateTime
             ): OutgoingMessage =
                 OutgoingMessage.build(
-                    type, content, senderEndpoint, recipientEndpoint, parcelExpiryDate, parcelId
+                    type, content, senderEndpoint, recipientEndpoint, parcelExpiryDate
                 )
         }
 

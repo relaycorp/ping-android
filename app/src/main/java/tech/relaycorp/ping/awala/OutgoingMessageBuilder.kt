@@ -12,7 +12,6 @@ interface OutgoingMessageBuilder {
         content: ByteArray,
         senderEndpoint: FirstPartyEndpoint,
         recipientEndpoint: ThirdPartyEndpoint,
-        parcelExpiryDate: ZonedDateTime,
-        parcelId: ParcelId
+        parcelExpiryDate: ZonedDateTime
     ): OutgoingMessage
 }

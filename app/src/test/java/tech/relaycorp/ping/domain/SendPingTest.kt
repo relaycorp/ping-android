@@ -11,7 +11,6 @@ import tech.relaycorp.awaladroid.endpoint.FirstPartyEndpoint
 import tech.relaycorp.awaladroid.endpoint.PublicThirdPartyEndpoint
 import tech.relaycorp.awaladroid.endpoint.ThirdPartyEndpoint
 import tech.relaycorp.awaladroid.messaging.OutgoingMessage
-import tech.relaycorp.awaladroid.messaging.ParcelId
 import tech.relaycorp.ping.awala.*
 import tech.relaycorp.ping.data.database.dao.PingDao
 import tech.relaycorp.ping.data.preference.AppPreferences
@@ -65,7 +64,7 @@ class SendPingTest {
             .thenReturn(pingMessageSerialized)
 
         val outgoingMessage = mock<OutgoingMessage>()
-        whenever(outgoingMessageBuilder.build(any(), any(), any(), any(), any(), any()))
+        whenever(outgoingMessageBuilder.build(any(), any(), any(), any(), any()))
             .thenReturn(outgoingMessage)
 
         val peerEntity = PublicPeerEntityFactory.build()
@@ -82,8 +81,7 @@ class SendPingTest {
             check {
                 val diff = ChronoUnit.MINUTES.between(ZonedDateTime.now(), it)
                 assertTrue(diff in 4..6)
-            },
-            any()
+            }
         )
         verify(sendGatewayMessage).send(outgoingMessage)
         verify(pingDao).save(check {

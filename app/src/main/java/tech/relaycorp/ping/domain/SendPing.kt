@@ -2,13 +2,13 @@ package tech.relaycorp.ping.domain
 
 import kotlinx.coroutines.flow.first
 import tech.relaycorp.awaladroid.AwaladroidException
-import tech.relaycorp.awaladroid.messaging.ParcelId
 import tech.relaycorp.ping.awala.*
 import tech.relaycorp.ping.data.database.dao.PingDao
 import tech.relaycorp.ping.data.database.entity.PingEntity
 import tech.relaycorp.ping.data.preference.AppPreferences
 import tech.relaycorp.ping.domain.model.Peer
 import java.time.ZonedDateTime
+import java.util.*
 import javax.inject.Inject
 import kotlin.time.Duration
 
@@ -33,14 +33,14 @@ class SendPing
         val recipient = publicThirdPartyEndpointLoad.load(peer.privateAddress)
             ?: throw SendPingException("Recipient not imported")
 
-        val parcelId = ParcelId.generate()
+        val pingId = UUID.randomUUID().toString()
         val expiresAt = ZonedDateTime.now().plusSeconds(duration.inSeconds.toLong())
         val authorization = sender.issueAuthorization(
             recipient,
             ZonedDateTime.now().plusSeconds(duration.inSeconds.toLong())
         )
         val pingMessageSerialized = pingSerialization.serialize(
-            parcelId.value,
+            pingId,
             authorization.pdaSerialized,
             authorization.pdaChainSerialized
         )
@@ -49,8 +49,7 @@ class SendPing
             pingMessageSerialized,
             sender,
             recipient,
-            expiresAt,
-            parcelId
+            expiresAt
         )
         try {
             sendGatewayMessage.send(outgoingMessage)
@@ -59,7 +58,7 @@ class SendPing
         }
 
         val ping = PingEntity(
-            pingId = parcelId.value,
+            pingId = pingId,
             peerPrivateAddress = peer.privateAddress,
             peerType = peer.peerType,
             sentAt = ZonedDateTime.now(),
