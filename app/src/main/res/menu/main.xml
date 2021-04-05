@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <item
         android:id="@+id/peers"
         android:icon="@drawable/ic_peers"
         android:title="@string/peers"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        tools:ignore="AlwaysShowAction" />
+    <item
+        android:id="@+id/about"
+        android:title="@string/about"
+        app:showAsAction="never" />
 </menu>
