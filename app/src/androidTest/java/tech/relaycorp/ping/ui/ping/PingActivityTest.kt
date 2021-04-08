@@ -3,6 +3,7 @@ package tech.relaycorp.ping.ui.ping
 import android.content.ClipboardManager
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.schibsted.spain.barista.assertion.BaristaContentDescriptionAssertions.assertContentDescription
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertNotDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
@@ -56,6 +57,8 @@ class PingActivityTest {
 
         assertDisplayed(peer.publicAddress)
         assertDisplayed(ping.pingId)
+        assertContentDescription(R.id.state, R.string.ping_state_sent)
+        assertDisplayed(DateTimeFormat.format(ping.sentAt))
         assertDisplayed(DateTimeFormat.format(ping.expiresAt))
         assertNotDisplayed(R.string.ping_pong_received_at)
     }
@@ -75,6 +78,8 @@ class PingActivityTest {
 
         assertDisplayed(peer.publicAddress)
         assertDisplayed(ping.pingId)
+        assertContentDescription(R.id.state, R.string.ping_state_replied)
+        assertDisplayed(DateTimeFormat.format(ping.sentAt))
         assertDisplayed(DateTimeFormat.format(ping.expiresAt))
         assertDisplayed(DateTimeFormat.format(ping.pongReceivedAt))
     }

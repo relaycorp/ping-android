@@ -11,6 +11,7 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import tech.relaycorp.ping.R
 import tech.relaycorp.ping.common.di.ViewModelFactory
+import tech.relaycorp.ping.domain.model.Ping
 import tech.relaycorp.ping.ui.BaseActivity
 import tech.relaycorp.ping.ui.common.DateTimeFormat
 import javax.inject.Inject
@@ -36,7 +37,21 @@ class PingActivity : BaseActivity() {
             .ping()
             .onEach {
                 recipient.text = it.peer.alias
-                sentAt.text = DateTimeFormat.format(it.sentAt)
+                state.setImageResource(
+                    when (it.state) {
+                        Ping.State.Sent -> R.drawable.ic_check
+                        Ping.State.SendAndReplied -> R.drawable.ic_double_check
+                        Ping.State.Expired -> R.drawable.ic_expired
+                    }
+                )
+                state.contentDescription = getString(
+                    when (it.state) {
+                        Ping.State.Sent -> R.string.ping_state_sent
+                        Ping.State.SendAndReplied -> R.string.ping_state_replied
+                        Ping.State.Expired -> R.string.ping_state_expired
+                    }
+                )
+                sentAtField.value = DateTimeFormat.format(it.sentAt)
                 pingIdField.value = it.pingId
                 expiresAtField.value = DateTimeFormat.format(it.expiresAt)
                 pongReceivedField.isVisible = it.pongReceivedAt != null
