@@ -3,7 +3,7 @@ package tech.relaycorp.ping.ui.ping
 import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
-import tech.relaycorp.gateway.ui.BaseViewModel
+import tech.relaycorp.ping.ui.BaseViewModel
 import tech.relaycorp.ping.common.Logging.logger
 import tech.relaycorp.ping.common.PublishFlow
 import tech.relaycorp.ping.domain.GetDefaultPeer

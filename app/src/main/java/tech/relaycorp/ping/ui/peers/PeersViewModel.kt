@@ -1,7 +1,7 @@
 package tech.relaycorp.ping.ui.peers
 
 import kotlinx.coroutines.flow.*
-import tech.relaycorp.gateway.ui.BaseViewModel
+import tech.relaycorp.ping.ui.BaseViewModel
 import tech.relaycorp.ping.domain.ObservePeers
 import tech.relaycorp.ping.domain.model.Peer
 import javax.inject.Inject

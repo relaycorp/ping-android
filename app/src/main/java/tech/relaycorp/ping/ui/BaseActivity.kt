@@ -9,7 +9,7 @@ import dev.chrisbanes.insetter.applyInsetter
 import kotlinx.android.synthetic.main.common_app_bar.*
 import kotlinx.coroutines.channels.sendBlocking
 import kotlinx.coroutines.flow.asFlow
-import tech.relaycorp.gateway.ui.common.MessageManager
+import tech.relaycorp.ping.ui.common.MessageManager
 import tech.relaycorp.ping.App
 import tech.relaycorp.ping.R
 import tech.relaycorp.ping.common.PublishFlow

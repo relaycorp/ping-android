@@ -3,8 +3,8 @@ package tech.relaycorp.ping.ui.common.loading
 import android.app.Activity
 import android.app.AlertDialog
 import android.view.WindowManager
-import tech.relaycorp.gateway.common.di.PerActivity
 import tech.relaycorp.ping.R
+import tech.relaycorp.ping.common.di.PerActivity
 import javax.inject.Inject
 
 @PerActivity

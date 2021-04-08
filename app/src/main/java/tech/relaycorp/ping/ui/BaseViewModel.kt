@@ -1,4 +1,4 @@
-package tech.relaycorp.gateway.ui
+package tech.relaycorp.ping.ui
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
