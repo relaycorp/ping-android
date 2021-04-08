@@ -37,7 +37,14 @@ class PingActivity : BaseActivity() {
             .ping()
             .onEach {
                 recipient.text = it.peer.alias
-                state.text = getString(
+                state.setImageResource(
+                    when (it.state) {
+                        Ping.State.Sent -> R.drawable.ic_check
+                        Ping.State.SendAndReplied -> R.drawable.ic_double_check
+                        Ping.State.Expired -> R.drawable.ic_expired
+                    }
+                )
+                state.contentDescription = getString(
                     when (it.state) {
                         Ping.State.Sent -> R.string.ping_state_sent
                         Ping.State.SendAndReplied -> R.string.ping_state_replied
