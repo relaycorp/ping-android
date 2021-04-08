@@ -42,13 +42,16 @@
                     android:textAppearance="@style/TextAppearance.Ping.Body"
                     tools:text="ping.awala.services" />
 
-                <TextView
-                    android:id="@+id/sentAt"
+                <ImageView
+                    android:id="@+id/state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
+                    android:contentDescription="@string/ping_state_sent"
+                    android:gravity="center_horizontal"
                     android:textAppearance="@style/TextAppearance.Ping.Body2"
-                    tools:text="Mar 13, 12:30" />
+                    app:tint="?iconTint"
+                    tools:src="@drawable/ic_check"
+                    tools:text="@string/ping_state_replied" />
 
             </LinearLayout>
 
@@ -63,6 +66,12 @@
                 android:layout_height="wrap_content"
                 app:copyEnabled="true"
                 app:label="@string/ping_id" />
+
+            <tech.relaycorp.ping.ui.common.FieldView
+                android:id="@+id/sentAtField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:label="@string/ping_sent_at" />
 
             <tech.relaycorp.ping.ui.common.FieldView
                 android:id="@+id/expiresAtField"

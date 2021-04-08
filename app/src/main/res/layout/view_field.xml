@@ -30,7 +30,7 @@
         style="@style/Widget.Ping.Button.Image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="8dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/copy"
         app:icon="@drawable/ic_copy"
