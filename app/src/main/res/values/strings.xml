@@ -49,8 +49,8 @@
     <string name="about_licenses">Open Source Libraries</string>
 
     <!-- No Gateway -->
-    <string name="no_gateway_title">Awala doesn\'t appear<br/>to be installed</string>
-    <string name="no_gateway_message">Install Awala so that you can<br/>use this app.</string>
+    <string name="no_gateway_title">Awala doesn\'t appear\nto be installed</string>
+    <string name="no_gateway_message">Install Awala so that you can\nuse this app.</string>
     <string name="no_gateway_download">Install Awala</string>
     <string name="no_gateway_download_other">Other download options</string>
 
