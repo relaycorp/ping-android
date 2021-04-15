@@ -37,7 +37,9 @@ android {
         }
     }
     compileOptions {
-        coreLibraryDesugaringEnabled true
+        // Workaround for https://github.com/relaycorp/awala-ping-android/issues/39
+        // coreLibraryDesugaringEnabled true
+
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
