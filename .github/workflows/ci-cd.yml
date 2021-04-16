@@ -44,8 +44,7 @@ jobs:
   release:
     name: "Deploy to Google Play Store"
     needs: ci
-#    if: github.ref == 'refs/heads/master'
-    if: false
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
