@@ -1,0 +1,1 @@
+This is a technical tool to end-to-end test Awala with and without access to the Internet.
