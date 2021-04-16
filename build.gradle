@@ -2,7 +2,7 @@
 buildscript {
   ext {
     kotlinVersion = '1.4.21'
-    kotlinCoroutinesVersion = '1.4.2'
+    kotlinCoroutinesVersion = '1.4.3-native-mt'
     relaynetTestingVersion = '1.2.1'
     junitVersion = '5.7.1'
   }
