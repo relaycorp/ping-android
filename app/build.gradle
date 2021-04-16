@@ -30,10 +30,27 @@ android {
         }
     }
 
+    signingConfigs {
+        debug {}
+
+        if (project.hasProperty('signingKeystorePath')) {
+            release {
+                storeFile file(signingKeystorePath)
+                storePassword System.getenv("ANDROID_KEYSTORE_PASSWORD")
+                keyAlias System.getenv("ANDROID_KEYSTORE_KEY_ALIAS")
+                keyPassword System.getenv("ANDROID_KEYSTORE_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            if (project.hasProperty('signingKeystorePath')) {
+                signingConfig signingConfigs.release
+            }
         }
     }
     compileOptions {
