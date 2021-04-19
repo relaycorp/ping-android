@@ -38,6 +38,7 @@
     <style name="Widget.Ping.Button.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeColor">?colorOnSurface</item>
         <item name="android:textColor">?colorOnSurface</item>
+        <item name="android:backgroundTint">?android:windowBackground</item>
     </style>
 
     <style name="Widget.Ping.Button.Text" parent="Widget.MaterialComponents.Button.TextButton">
