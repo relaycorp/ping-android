@@ -141,7 +141,7 @@ dependencies {
     // Database
     implementation 'androidx.room:room-runtime:2.2.6'
     kapt 'androidx.room:room-compiler:2.2.6'
-    implementation 'androidx.room:room-ktx:2.2.6'
+    implementation 'androidx.room:room-ktx:2.3.0'
 
     // Lists
     implementation "com.airbnb.android:epoxy:4.4.4"
