@@ -3,12 +3,16 @@ package tech.relaycorp.ping.ui.peers
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
+import com.schibsted.spain.barista.rule.flaky.AllowFlaky
+import com.schibsted.spain.barista.rule.flaky.FlakyTestRule
+import com.schibsted.spain.barista.rule.flaky.Repeat
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 import tech.relaycorp.ping.R
 import tech.relaycorp.ping.data.database.dao.PublicPeerDao
@@ -21,12 +25,18 @@ import tech.relaycorp.ping.test.WaitAssertions.waitFor
 import tech.relaycorp.ping.ui.peers.PeerActivity
 import javax.inject.Inject
 
+
 @RunWith(AndroidJUnit4::class)
 class PeerActivityTest {
 
     @Rule
     @JvmField
     val testRule = BaseActivityTestRule(PeerActivity::class, false)
+
+    @Rule
+    @JvmField
+    val flakyChainRule = RuleChain.outerRule(FlakyTestRule())
+        .around(testRule)
 
     @Inject
     lateinit var publicPeerDao: PublicPeerDao
@@ -50,6 +60,7 @@ class PeerActivityTest {
     }
 
     @Test
+    @AllowFlaky(attempts = 3)
     fun deletes() {
         val peer = PublicPeerEntityFactory.build()
         runBlocking {
