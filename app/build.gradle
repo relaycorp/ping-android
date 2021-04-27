@@ -144,7 +144,7 @@ dependencies {
     implementation 'androidx.room:room-ktx:2.3.0'
 
     // Lists
-    implementation "com.airbnb.android:epoxy:4.4.4"
+    implementation "com.airbnb.android:epoxy:4.5.0"
     kapt "com.airbnb.android:epoxy-processor:4.4.4"
 
     // FAB Speed Dial
