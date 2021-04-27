@@ -16,7 +16,11 @@ class IntentsRule : TestRule {
                     // Occasionally `Intents.init()` might be called twice before `Intents.release()` is called
                 }
                 base.evaluate()
-                Intents.release()
+                try {
+                    Intents.release()
+                } catch (_: IllegalStateException) {
+                    // Occasionally `Intents.init()` might be missed
+                }
             }
         }
 }
