@@ -45,5 +45,6 @@
         <activity
             android:name=".ui.main.LicensesActivity"
             android:label="@string/about_licenses" />
+        <activity android:name=".ui.main.NoGatewayActivity" />
     </application>
 </manifest>
