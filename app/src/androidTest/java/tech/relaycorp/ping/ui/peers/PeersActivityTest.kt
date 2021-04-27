@@ -2,6 +2,7 @@ package tech.relaycorp.ping.ui.peers
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
+import com.schibsted.spain.barista.rule.flaky.AllowFlaky
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Rule
@@ -11,6 +12,7 @@ import tech.relaycorp.ping.data.database.dao.PublicPeerDao
 import tech.relaycorp.ping.test.AppTestProvider.component
 import tech.relaycorp.ping.test.BaseActivityTestRule
 import tech.relaycorp.ping.test.PublicPeerEntityFactory
+import tech.relaycorp.ping.test.WaitAssertions.waitFor
 import javax.inject.Inject
 
 @RunWith(AndroidJUnit4::class)
@@ -29,6 +31,7 @@ class PeersActivityTest {
     }
 
     @Test
+    @AllowFlaky(attempts = 3)
     fun showsPublicPeers() {
         val peer = PublicPeerEntityFactory.build()
         runBlocking {
@@ -37,6 +40,8 @@ class PeersActivityTest {
 
         testRule.start()
 
-        assertDisplayed(peer.publicAddress)
+        waitFor {
+            assertDisplayed(peer.publicAddress)
+        }
     }
 }
