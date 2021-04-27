@@ -10,9 +10,12 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.interaction.BaristaClickInteractions.clickOn
 import com.schibsted.spain.barista.interaction.BaristaEditTextInteractions.writeTo
+import com.schibsted.spain.barista.rule.flaky.AllowFlaky
+import com.schibsted.spain.barista.rule.flaky.FlakyTestRule
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import org.junit.rules.RuleChain
 import org.junit.runner.RunWith
 import tech.relaycorp.ping.R
 import tech.relaycorp.ping.test.ActivityAssertions.waitForCurrentActivityToBe
@@ -26,6 +29,11 @@ class AddPublicPeerActivityTest {
     @Rule
     @JvmField
     val testRule = BaseActivityTestRule(PeersActivity::class, false)
+
+    @Rule
+    @JvmField
+    val flakyChainRule = RuleChain.outerRule(FlakyTestRule())
+        .around(testRule)
 
     @Before
     fun setUp() {
@@ -59,6 +67,7 @@ class AddPublicPeerActivityTest {
     }
 
     @Test
+    @AllowFlaky(attempts = 3)
     fun addPublicPeerMissingCertificate() {
         testRule.start()
         clickOn(R.id.addPeer)
