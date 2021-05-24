@@ -148,7 +148,7 @@ dependencies {
     kapt "com.airbnb.android:epoxy-processor:4.4.4"
 
     // FAB Speed Dial
-    implementation "com.leinardi.android:speed-dial:3.1.1"
+    implementation "com.leinardi.android:speed-dial:3.2.0"
 
     // Display open-source licenses
     implementation "com.mikepenz:aboutlibraries:8.8.5"
