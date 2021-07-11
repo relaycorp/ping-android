@@ -129,7 +129,7 @@ dependencies {
     kapt 'com.google.dagger:dagger-compiler:2.37'
 
     // Awala
-    implementation 'com.github.relaycorp:awala-endpoint-android:1.6.6'
+    implementation 'com.github.relaycorp:awala-endpoint-android:v1.6.9'
 
     // UI
     implementation 'dev.chrisbanes.insetter:insetter:0.6.0'
