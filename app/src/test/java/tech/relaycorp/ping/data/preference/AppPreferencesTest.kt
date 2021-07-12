@@ -2,7 +2,7 @@ package tech.relaycorp.ping.data.preference
 
 import android.content.Context
 import androidx.test.core.app.ApplicationProvider
-import com.tfcporciuncula.flow.FlowSharedPreferences
+import com.fredporciuncula.flow.preferences.FlowSharedPreferences
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.TestCoroutineScope
 import kotlinx.coroutines.test.runBlockingTest

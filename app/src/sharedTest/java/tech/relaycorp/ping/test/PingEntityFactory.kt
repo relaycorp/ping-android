@@ -8,12 +8,13 @@ import java.util.*
 
 object PingEntityFactory {
     fun build(peer: PublicPeerEntity): PingEntity {
+        val now = ZonedDateTime.now().withNano(0)
         return PingEntity(
             pingId = UUID.randomUUID().toString(),
             peerPrivateAddress = peer.privateAddress,
             peerType = PeerType.Public,
-            sentAt = ZonedDateTime.now(),
-            expiresAt = ZonedDateTime.now().plusDays(1)
+            sentAt = now,
+            expiresAt = now.plusDays(1)
         )
     }
 }
