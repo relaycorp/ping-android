@@ -27,7 +27,7 @@ class PingDaoTest {
     private val peerDao = db.publicPeerDao()
 
     @Test
-    internal fun saveAndList() = runBlocking {
+    fun saveAndList() = runBlocking {
         assertEquals(emptyList<PingWithPublicPeer>(), pingDao.listPublic().first())
 
         val peer = PublicPeerEntityFactory.build()
