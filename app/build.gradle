@@ -7,7 +7,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'com.github.triplet.gradle:play-publisher:3.4.0'
+        classpath 'com.github.triplet.gradle:play-publisher:3.5.0'
     }
 }
 
@@ -126,13 +126,13 @@ dependencies {
 
     // Dependency Injection
     api 'com.google.dagger:dagger:2.37'
-    kapt 'com.google.dagger:dagger-compiler:2.35.1'
+    kapt 'com.google.dagger:dagger-compiler:2.37'
 
     // Awala
     implementation 'com.github.relaycorp:awala-endpoint-android:v1.6.12'
 
     // UI
-    implementation 'dev.chrisbanes.insetter:insetter:0.5.0'
+    implementation 'dev.chrisbanes.insetter:insetter:0.6.0'
 
     // Preferences
     implementation 'androidx.preference:preference-ktx:1.1.1'
@@ -140,7 +140,7 @@ dependencies {
 
     // Database
     implementation 'androidx.room:room-runtime:2.3.0'
-    kapt 'androidx.room:room-compiler:2.2.6'
+    kapt 'androidx.room:room-compiler:2.3.0'
     implementation 'androidx.room:room-ktx:2.3.0'
 
     // Lists
@@ -157,7 +157,7 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     testImplementation 'androidx.test:core:1.4.0'
     testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$kotlinCoroutinesVersion"
-    testImplementation 'org.mockito:mockito-inline:3.7.7'
+    testImplementation 'org.mockito:mockito-inline:3.11.2'
     testImplementation 'com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0'
     testImplementation 'tech.relaycorp:awala-testing:1.2.3'
     testImplementation 'org.robolectric:robolectric:4.6.1'
