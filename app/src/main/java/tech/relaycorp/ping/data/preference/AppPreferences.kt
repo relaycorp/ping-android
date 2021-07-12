@@ -1,6 +1,6 @@
 package tech.relaycorp.ping.data.preference
 
-import com.tfcporciuncula.flow.FlowSharedPreferences
+import com.fredporciuncula.flow.preferences.FlowSharedPreferences
 import kotlinx.coroutines.flow.*
 import tech.relaycorp.ping.domain.model.PeerType
 import javax.inject.Inject

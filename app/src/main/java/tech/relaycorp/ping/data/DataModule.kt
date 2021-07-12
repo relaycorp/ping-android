@@ -3,7 +3,7 @@ package tech.relaycorp.ping.data
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.room.Room
-import com.tfcporciuncula.flow.FlowSharedPreferences
+import com.fredporciuncula.flow.preferences.FlowSharedPreferences
 import dagger.Module
 import dagger.Provides
 import tech.relaycorp.ping.data.database.AppDatabase
