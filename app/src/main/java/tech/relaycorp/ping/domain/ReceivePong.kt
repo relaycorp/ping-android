@@ -17,6 +17,7 @@ class ReceivePong
 ) {
 
     suspend fun receive(incomingMessage: IncomingMessage) {
+        logger.info("BADGER: Received message!")
         if (incomingMessage.type != AwalaPing.V1.PongType) {
             incomingMessage.ack()
             return
